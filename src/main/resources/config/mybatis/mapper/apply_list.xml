@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apply_list">	
+
+	<select id="selectList" resultType="map" parameterType="String">
+		select *
+			from apply_list al
+			inner join apply a
+			on al.apply_id = a.apply_id
+			where al.apply_id = #{apply_id}
+	</select>
+	
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org">
+	
+	<insert id="insert" parameterType="member.pf.org.Org_DTO">
+		insert into org values(
+			#{org_no},
+			'pf_no1', 		<!-- #{pf_no},  -->
+			'member_no1',	<!-- #{member_no}, -->
+			#{socialact_cno},
+			#{name},
+			#{posi},
+			#{stat},
+			#{text}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.org.Org_DTO">
+		update org set
+			socialact = #{socialact_cno},
+			name = #{name},
+			posi = #{posi},
+			stat = #{stat},
+			text = #{text}
+			where org_no = #{org_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete org
+			where org_no = #{org_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.org.Org_DTO" parameterType="String">
+		select *
+			from org o
+			
+			inner join socialact_c s
+			on o.socialact_cno = s.socialact_cno
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from org o
+			
+			inner join socialact_c s
+			on o.socialact_cno = s.socialact_cno
+			
+			where o.org_no = #{org_no}
+	</select>
+	
+	<select id="orgList" resultType="map">
+		select *
+			from org o
+			
+			inner join socialact_c s
+			on o.socialact_cno = s.socialact_cno
+	</select>
+	
+</mapper>

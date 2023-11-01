@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean> -->
+	<context:annotation-config/>
+
+		
+	<beans:bean class="headerController.HomeController">	
+	</beans:bean>
+	
+  	<beans:bean class="business.bmember.Bmember_Controller">
+		<beans:constructor-arg ref="bmember_service"/>
+		<beans:constructor-arg ref="createo_mng_service"/>
+		<beans:constructor-arg ref="depart_mng_service"/>
+		<beans:constructor-arg ref="posi_mng_service"/>
+		<beans:constructor-arg ref="bpf_service"/>
+	</beans:bean>
+	 
+	 <beans:bean class="business.createo_mng.CreateO_Mng_Controller">
+		<beans:constructor-arg ref="createo_mng_service"/>
+		<beans:constructor-arg ref="depart_mng_service"/>
+		<beans:constructor-arg ref="gradeo_mng_service"/>
+	</beans:bean> 
+	
+	 <beans:bean class="business.bpf.Bpf_Controller">
+		<beans:constructor-arg ref="bpf_service"/>
+		<beans:constructor-arg ref="bmember_service"/>
+		<beans:constructor-arg ref="bcontact_service"/>
+		<beans:constructor-arg ref="bcontact_type_service"/>
+		<beans:constructor-arg ref="bpf_url_service"/>
+		<beans:constructor-arg ref="bpf_sns_service"/>
+		<beans:constructor-arg ref="homepg_type_c_service"/>
+		<beans:constructor-arg ref="sns_c_service"/>
+		<beans:constructor-arg ref="createo_mng_service"/>
+	</beans:bean> 
+	
+	<beans:bean class="business.bcontact.Bcontact_Controller">
+		<beans:constructor-arg ref="bcontact_service"/>
+	</beans:bean> 
+	
+	<beans:bean class="business.bpf_url.Bpf_Url_Controller">
+		<beans:constructor-arg ref="bpf_url_service"/>
+	</beans:bean> 
+	
+	<beans:bean class="business.bpf_sns.Bpf_SNS_Controller">
+		<beans:constructor-arg ref="bpf_sns_service"/>
+	</beans:bean> 
+
+	<beans:bean class="business.depart_mng.Depart_Mng_Controller">
+		<beans:constructor-arg ref="depart_mng_service"/>
+		<beans:constructor-arg ref="posi_mng_service"/>
+	</beans:bean> 
+
+	<beans:bean class="business.posi_mng.Posi_Mng_Controller">
+		<beans:constructor-arg ref="posi_mng_service"/>
+	</beans:bean> 
+
+	<beans:bean class="business.gradeo_mng.GradeO_Mng_Controller">
+		<beans:constructor-arg ref="gradeo_mng_service"/>
+	</beans:bean> 
+
+	<beans:bean class="member.member.Member_Controller">
+		<beans:constructor-arg ref="member_service"/>
+	</beans:bean> 
+	
+	<beans:bean class="member.ilchon.Ilchon_Controller">
+		<beans:constructor-arg ref="ilchon_service"/>
+		<beans:constructor-arg ref="mentor_contact_service"/>
+	</beans:bean> 
+
+	<beans:bean class="member.follow.Follow_Controller">
+		<beans:constructor-arg ref="follow_service"/>
+	</beans:bean> 
+
+	<beans:bean class="member.mentor.mentor_apply.Mentor_Apply_Controller">
+		<beans:constructor-arg ref="mentor_apply_service"/>
+		<beans:constructor-arg ref="member_service"/>
+		<beans:constructor-arg ref="mentor_grade_service"/>
+	</beans:bean>
+	
+	<beans:bean class="member.mentor.mentor_contact.Mentor_Contact_Controller">
+		<beans:constructor-arg ref="mentor_contact_service"/>
+		<beans:constructor-arg ref="mentor_apply_service"/>
+	</beans:bean>
+
+	<beans:bean class="member.mentor.mentor_review.Mentor_Review_Controller">
+		<beans:constructor-arg ref="mentor_review_service"/>
+		<beans:constructor-arg ref="mentor_grade_service"/>
+	</beans:bean>
+
+	<beans:bean id = "chat_room_controller" class="chat.chat_room.Chat_Room_Controller">
+		<beans:constructor-arg ref="chat_room_service"/>
+		<beans:constructor-arg ref="chat_other_service"/>
+		<beans:constructor-arg ref="chat_service"/>
+	</beans:bean>
+	
+	<beans:bean class="chat.chat_other.Chat_Other_Controller">
+		<beans:constructor-arg ref="chat_other_service"/>
+	</beans:bean>
+
+	<beans:bean class="chat.chat.Chat_Controller">
+		<beans:constructor-arg ref="chat_service"/>
+	</beans:bean>
+
+	<beans:bean class="tech.tech_test.Tech_Test_Controller">
+		<beans:constructor-arg ref = "tech_test_service"/>
+	</beans:bean>
+
+	<beans:bean class="tech.tech_test_qna.Tech_Test_QnA_Controller">
+		<beans:constructor-arg ref="tech_test_qna_service"/>
+		<beans:constructor-arg ref="tech_test_opt_service"/>
+	</beans:bean>
+
+	<beans:bean class="tech.extest_pract.ExTest_Pract_Controller">
+		<beans:constructor-arg ref="extest_pract_service"/>
+		<beans:constructor-arg ref="extest_opt_service"/>
+	</beans:bean>
+	
+	<beans:bean class="jpost.Jpost_Controller">
+		<beans:constructor-arg ref="jpost_service"/>
+		<beans:constructor-arg ref="jpost_detail_service"/>
+		<beans:constructor-arg ref="empl_type_c_service"/>
+		<beans:constructor-arg ref="worktime_c_service"/>
+		<beans:constructor-arg ref="jarea_c_service"/>
+		<beans:constructor-arg ref="lv_c_service"/>
+		<beans:constructor-arg ref="school_c_service"/>
+		<beans:constructor-arg ref="posi_c_service"/>
+		<beans:constructor-arg ref="apply_service"/>
+	</beans:bean>
+
+	 <!-- 회원 프로필 -->
+	<beans:bean class="member.pf.Profile_Controller">
+		<beans:constructor-arg ref="career_service"/> 
+		<beans:constructor-arg ref="edu_service"/> 
+		<beans:constructor-arg ref="rest_service"/> 
+		<beans:constructor-arg ref="rest_rsn_service"/> 
+		<beans:constructor-arg ref="cert_service"/> 
+		<beans:constructor-arg ref="inscert_service"/> 
+		<beans:constructor-arg ref="proj_service"/> 
+		<beans:constructor-arg ref="proj_entry_service"/> 
+		<beans:constructor-arg ref="army_service"/> 
+		<beans:constructor-arg ref="city_c_service"/> 
+		<beans:constructor-arg ref="empl_type_c_service"/> 
+		<beans:constructor-arg ref="jarea_c_service"/> 
+		<beans:constructor-arg ref="vol_service"/> 
+		<beans:constructor-arg ref="thesis_service"/> 
+		<beans:constructor-arg ref="langskill_service"/> 
+		<beans:constructor-arg ref="org_service"/> 
+		<beans:constructor-arg ref="jstat_service"/> 
+		<beans:constructor-arg ref="socialact_c_service"/> 
+		<beans:constructor-arg ref="exam_service"/> 
+		<beans:constructor-arg ref="award_service"/> 
+		<beans:constructor-arg ref="jstat_c_service"/> 
+	</beans:bean>
+ 	
+ 	 <beans:bean class="member.apply.Apply_Controller">
+ 		<beans:constructor-arg ref="apply_service"/>
+ 		<beans:constructor-arg ref="apply_form_service"/>
+		<beans:constructor-arg ref="apply_list_service"/> 
+		<beans:constructor-arg ref="apply_stat_service"/> 
+		<beans:constructor-arg ref="apply_mng_service"/>
+		<beans:constructor-arg ref="jpost_service"/>
+ 	</beans:bean>
+ 	
+ 	<beans:bean class="jpost.Apply_Mng_Controller">
+ 		<beans:constructor-arg ref="apply_mng_service"/>
+ 	</beans:bean>
+ 	
+	<beans:bean class="member.recommand.Rec_Controller">
+		<beans:constructor-arg ref="rec_form_service"/>
+		<beans:constructor-arg ref="rec_ask_service"/>
+		<beans:constructor-arg ref="relation_service"/>
+	</beans:bean>
+
+
+ 	<websocket:handlers>
+       	<websocket:mapping handler="echoHandler" path="/echo"/>
+       	<websocket:handshake-interceptors>
+       		<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
+       	</websocket:handshake-interceptors>
+       	<websocket:sockjs />
+    </websocket:handlers>              
+	
+	<beans:bean id="echoHandler" class="path.EchoHandler">
+		<beans:constructor-arg ref="chat_service"/>
+		<beans:constructor-arg ref="chat_room_controller"/>
+	</beans:bean> 
+	
+	<!-- 이메일 발송 -->
+	<beans:bean id = "gmlfkrd" class="email.MailSendService">
+		<beans:constructor-arg ref="mailSender"/>
+	</beans:bean>
+</beans:beans>

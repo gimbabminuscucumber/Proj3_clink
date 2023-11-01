@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rest_rsn">
+	
+	<select id="selectList" resultType="member.pf.rest_rsn.Rest_Rsn_DTO">
+		select *
+			from rest_rsn
+	</select>
+</mapper>

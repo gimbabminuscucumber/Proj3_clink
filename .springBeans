@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.14.202009150957-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[true]]></enableImports>
+	<configs>
+		<config>src/main/resources/config/spring/context/context-2-mybatis.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/empl_type_c.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/bmember.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/apply_mng.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/apply_list.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/apply_form.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/apply.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/jarea_c.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/army.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/apply_stat.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/city_c.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/relation.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/lv_c.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/vol.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/socialact_c.xml</config>
+		<config>src/main/resources/config/mybatis/mapper/career.xml</config>
+		<config>src/main/resources/config/spring/mvc/servlet-context.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

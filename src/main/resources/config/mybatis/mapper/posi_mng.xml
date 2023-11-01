@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="posi_mng">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getNoList" parameterType="int" resultType="business.posi_mng.Posi_Mng_DTO">
+		select * from Posi_Mng where depart_mng_no = #{no}
+	</select>
+	
+	<insert id="insert" parameterType="business.posi_mng.Posi_Mng_DTO">
+		insert into Posi_Mng values(Posi_Mng_seq.nextval,#{depart_mng_no},#{name})
+	</insert>
+	
+	<update id="update" parameterType="business.posi_mng.Posi_Mng_DTO">
+		update Posi_Mng set name = #{name} where posi_mng_no = #{posi_mng_no}
+	</update>
+	
+	<delete id="deleteDp" parameterType="int">
+		delete Posi_Mng where depart_mng_no = #{no}
+	</delete>
+	
+	<delete id="delete" parameterType="int">
+		delete Posi_Mng where posi_mng_no = #{no}
+	</delete>
+	
+</mapper>

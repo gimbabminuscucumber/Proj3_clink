@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu">
+
+	<insert id="insert" parameterType="member.pf.edu.Edu_DTO">
+		insert into edu values(
+			#{edu_no},
+			'pf_no1',		<!-- #{pf_no} -->
+			'member_no1',	<!-- #{member_no} -->
+			#{school},
+			#{stat},
+			#{degree},
+			#{major},
+			#{gpa}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.edu.Edu_DTO">
+		update edu set
+			school=#{school},
+			degree=#{degree},
+			major=#{major},
+			gpa=#{gpa}
+			where edu_no = #{edu_no}
+	</select>	
+		
+	<delete id="delete" parameterType="String">
+		delete edu
+			where edu_no = #{edu_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.edu.Edu_DTO" parameterType="String">
+		select *
+			from edu
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *	
+			from edu e
+			where e.edu_no = #{edu_no}
+	</select>
+	
+	<select id="eduList" resultType="map">
+		select *
+			from edu
+	</select>
+	
+	
+</mapper>

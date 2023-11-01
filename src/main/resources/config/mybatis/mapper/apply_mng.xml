@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apply_mng">	
+
+	<insert id="insert" parameterType="jpost.apply_mng.Apply_Mng_DTO">
+		insert into apply_mng values(
+			apply_mng_seq.nextval,
+			#{apply_mng_id}
+			#{jpost_id},
+			#{apply_id},
+			80					<!-- #{fit, jdbcType=VARCHAR} -->
+		)
+	</insert>
+	
+	<select id="selectList" resultType="jpost.apply_mng.Apply_Mng_DTO" parameterType="map">
+		select *
+			from apply_mng a
+			
+			inner join jpost j
+			on j.jpost_id = a.jpost_id
+			
+			where a.jpost_id = #{jpost_id}
+	</select>
+	
+	<select id="apply_all" resultType="map" >
+		select *
+			from member m
+			
+			inner join apply a
+            on m.member_id = a.member_id
+            
+            inner join apply_mng am
+            on a.apply_id = am.apply_id
+            
+            order by a.apply_date asc		<!-- #{} 으로 받아오려는 데이터가 있으면, parameterType에 받아오려는 데이터가 있어야함 -->
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">	
+		select a.*
+			from apply a
+			inner join apply_mng am
+			on a.apply_id = am.apply_id
+			where am.jpost_id = #{jpost_id}
+	</select>
+	
+	<select id="apply_usr" resultType="map" parameterType="String">
+		select *
+			from apply a
+			
+			inner join apply_form af
+			on a.apply_id = af.apply_id
+			
+			inner join member m
+			on a.member_id = m.member_id
+			where a.apply_id = #{apply_id}
+	</select>
+	
+</mapper>

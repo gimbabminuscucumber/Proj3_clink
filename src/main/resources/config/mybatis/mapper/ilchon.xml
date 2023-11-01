@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ilchon">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getNextGroupNo" resultType="int">
+		select ilchon_groupno_seq.nextval from dual
+	</select>
+	
+	<insert id="insertIlchon" parameterType="member.ilchon.Ilchon_DTO">
+		insert into Ilchon values(Ilchon_seq.nextval,#{id1},#{id2},0,sysdate,null,#{type},#{groupno})
+	</insert>
+	
+	<select id="getAskedCnt" parameterType="String" resultType="int">
+		select count(ilchon_no) from ilchon where type = 0 and stat != 1 and id1 = #{member_id}
+	</select>
+	
+	<select id="getSentList" parameterType="String" resultType="map">
+		select * from ilchon where type = 1 and stat = 0 and id1 = #{member_id}
+	</select>
+
+	<select id="getAskedList" parameterType="String" resultType="map">
+		select * from ilchon where type = 0 and stat = 0 and id1 = #{member_id}
+	</select>
+	
+	<update id="updateAt" parameterType="int">
+		update Ilchon set stat = 1 ,
+		accepted = sysdate 
+		where groupno = #{no}
+	</update>
+	
+	<select id="getIlchonList" parameterType="String" resultType="map">
+		select * from ilchon i inner join member m on i.id1 = m.member_id where id1 != #{member_id}  and id2 = #{member_id} and stat = 1
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete Ilchon where groupno = #{gno}
+	</delete>
+	
+	<select id="checkMail" parameterType="map" resultType="member.ilchon.Ilchon_DTO">
+		select * from Ilchon where id1 = #{id1} and id2 = #{id2}
+	</select>
+	
+	<delete id="destroy" parameterType="int">
+		delete Ilchon where groupno = #{no}
+	</delete>
+	
+</mapper>

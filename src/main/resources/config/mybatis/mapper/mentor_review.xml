@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mentor_review">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getMenteeReview" parameterType="String" resultType="map">
+			select a.mentor,a.mentor_contact_no,concat(first,last)name ,a.start_date from (select * from mentor_contact mc
+                where mentee = #{member_id} 
+                and end_date is not null) a
+				left join mentor_review mr
+				on a.mentor_contact_no = mr.mentor_contact_no
+				inner join member m
+				on m.member_id = a.mentor
+				where mentor_review_no is null
+	</select>
+	
+	<insert id="writeReview" parameterType="member.mentor.mentor_review.Mentor_Review_DTO">
+		insert into Mentor_Review values(Mentor_Review_seq.nextval,#{mentor_contact_no},#{member_id},sysdate,#{content},#{score})
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

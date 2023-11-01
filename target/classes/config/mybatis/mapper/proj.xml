@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj">
+	
+	<insert id="insert" parameterType="member.pf.proj.Proj_DTO">
+		insert into proj values(
+			#{proj_no},
+			'pf_no2',		<!-- #{pf_no} -->		
+			'member_no2',	<!-- #{member_no} -->
+			#{name},
+			#{stat}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.proj.Proj_DTO">
+		update proj set
+			name=#{name}
+			where proj_no = #{proj_no}			
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete proj
+			where proj_no = #{proj_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.proj.Proj_DTO">
+		select *
+			from proj
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from proj p
+			
+			inner join proj_entry pe
+			on p.proj_no = pe.proj_no
+			
+			where p.proj_no = #{proj_no}
+	</select>
+	
+	<select id="projList" resultType="map">
+		select *
+			from proj p
+	</select>
+	
+</mapper>

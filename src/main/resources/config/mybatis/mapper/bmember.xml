@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bmember">
+
+	<insert id="bmember" parameterType="business.bmember.Bmember_DTO">
+		
+		insert into bmember values(
+			bmember_seq.nextval,
+			'bmember_id',		<!-- #{bmember_id} -->
+			'bm_stat_id',		<!-- #{bm_stat_id} -->
+			'actstat_cid',		<!-- #{actstat_cid} -->
+			#{name},
+			#{en_name},
+			#{email},
+			#{pw},
+			#{salt},
+			sysdate,
+			#{regi_number},
+			#{group_name}
+		)
+		
+	</insert>
+
+</mapper>

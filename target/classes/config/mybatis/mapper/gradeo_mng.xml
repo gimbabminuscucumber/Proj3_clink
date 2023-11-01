@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gradeo_mng">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="insert" parameterType="business.gradeo_mng.GradeO_Mng_DTO">
+		insert into GradeO_Mng values(GradeO_Mng_seq.nextval,#{craeteo_mng_id},#{grade1},#{grade2},#{grade3},#{grade4})
+	</insert>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

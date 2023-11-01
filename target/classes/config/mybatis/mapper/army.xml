@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="army">	
+
+	<insert id="insert" parameterType="member.pf.army.Army_DTO">
+		insert into army values(
+			#{army_no},
+			'pf_no1',			<!-- #{pf_no}, -->
+			'member_no1', 		<!-- #{member_no},  -->
+			#{opt},	
+			#{type},
+			#{disch},
+			#{rsn, jdbcType=VARCHAR},
+			#{start_date},
+			#{end_date},
+			#{termStat}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.army.Army_DTO">
+		update army set
+			opt=#{opt},
+			type=#{type},
+			disch=#{disch},
+			rsn=#{rsn},
+			start_date=#{start_date},
+			end_date=#{end_date}
+			where army_no = #{army_no}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete army
+			where amry_no = #{amry_no}
+	</delete>
+
+	<select id="selectList" resultType="member.pf.army.Army_DTO">
+		select *
+			from army
+	</select>
+
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from army
+	</select>
+	
+	<select id="armyList" resultType="map">
+		select *
+			from army
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jpost_detail">	<!-- dao의 return 파라미터에서 사용되는 값  -->
+
+	<insert id="insert" parameterType="jpost.jpost_detail.Jpost_Detail_DTO">
+		insert into jpost_detail values(
+			jpost_detail_seq.nextval,
+			#{jpost_detail_id},
+			#{jpost_id},
+			#{jarea_cno},
+			#{worktime_cno},
+			#{empl_type_cno},		
+			#{posi_cno},
+			#{task},
+			#{lv_cno},
+			#{salary},
+			#{school_cno},
+			#{type}
+		)
+	</insert>
+	
+	<select id="getDetail_no" resultType="int">
+		select jpost_detail_seq.nextval from dual	<!-- jpost_detail의 no -->
+	</select>
+
+	<select id="update" parameterType="jpost.jpost_detail.Jpost_Detail_DTO">
+		update jpost_detail set
+			jarea_cno = #{jarea_cno},				
+			worktime_cno = #{worktime_cno},		
+			empl_type_cno = #{empl_type_cno},			
+			posi_cno = #{posi_cno},
+			task = #{task},
+			lv_cno = #{lv_cno},
+			salary = #{salary},
+			school_cno = #{school_cno},
+			type = #{type}
+			where jpost_detail_id = #{jpost_detail_id}
+	</select>
+	
+</mapper>

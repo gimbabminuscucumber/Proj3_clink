@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat_room">
+	<!-- SQL문들을 작성하는 파일 -->
+ 	<select id="getRoom" parameterType="map" resultType="String">
+		select last.no from (select a.chat_room_no no,count(a.chat_room_no) room_no from (select * from chat_other co where usr_id = #{my})a 
+			inner join (select * from chat_other co where usr_id = #{opponent})b
+			on a.chat_room_no = b.chat_room_no
+			inner join chat_other co
+			on a.chat_room_no = co.chat_room_no
+			group by a.chat_room_no) last
+			where last.room_no = 2
+	</select> 
+	
+	<select id="getList" parameterType="map" resultType="map">
+		select a.*,case 
+					when substr(usr_id,0,5) = 'BBMXX' then (select name from bmember where bmember_id = usr_id) 
+		            when substr(usr_id,0,5) = 'BCRMX' then (select name from createo_mng where createo_mng_id = usr_id)
+		            when substr(usr_id,0,5) = 'BCRMX' then (select concat(m.first_name,m.last_name) from member m where member_id = usr_id) end name,
+		            case when cr.title is null then (select LISTAGG(case 
+					when substr(usr_id,0,5) = 'BBMXX' then (select name from bmember where bmember_id = usr_id) 
+		            when substr(usr_id,0,5) = 'BCRMX' then (select name from createo_mng where createo_mng_id = usr_id)
+		            when substr(usr_id,0,5) = 'BCRMX' then (select concat(m.first_name,m.last_name) from member m where member_id = usr_id) end, ',') from chat_other where chat_room_no = cno and usr_id != #{usr_id}) 
+		            else cr.title end as title
+		from 
+		    (select * from (select co2.chat_room_no cno, max(chat_no)a from chat_other co1
+		                        right join chat_other co2
+		                        on co1.chat_room_no = co2.chat_room_no
+		                        inner join chat c
+		                        on co2.chat_other_no = c.chat_other_no
+		                        where co1.usr_id = #{usr_id} and c.del != 1
+		                        GROUP by co2.chat_room_no) last
+		    inner join chat c 
+		    on last.a = c.chat_no
+		    inner join chat_other co
+		    on co.chat_other_no = c.chat_other_no)a
+		inner join chat_room cr
+		on a.cno = cr.chat_room_no
+		<if test="k != null">
+		 where a.cno = #{k}
+		</if>
+		 order by sent desc
+	</select> 
+	
+	<select id="getNewNum" resultType="String" parameterType="String">
+			select count(cno) from (select co2.chat_room_no cno, max(chat_no)a from chat_other co1
+		                        right join chat_other co2
+		                        on co1.chat_room_no = co2.chat_room_no
+		                        inner join chat c
+		                        on co2.chat_other_no = c.chat_other_no
+		                        where co1.usr_id = #{usr_id} and c.del != 1
+		                        GROUP by co2.chat_room_no) last
+		    inner join chat c 
+		    on last.a = c.chat_no
+		    inner join chat_other co
+		    on co.chat_other_no = c.chat_other_no 
+            where c.stat = 0 and co.usr_id != #{usr_id}
+	</select> 
+	
+	<insert id="createRoom" parameterType="int">
+		insert into Chat_Room values(#{nextNum},null,0,0)
+	</insert>
+	
+	<select id="getNextRoom" resultType="int">
+		select chat_room_seq.nextval from dual
+	</select>
+	
+	<select id="getRoomList" parameterType="String" resultType="int">
+		select cno from (select co2.chat_room_no cno, max(chat_no)a from chat_other co1
+		                        right join chat_other co2
+		                        on co1.chat_room_no = co2.chat_room_no
+		                        inner join chat c
+		                        on co2.chat_other_no = c.chat_other_no
+		                        where co1.usr_id = #{usr_id} and c.del != 1
+		                        GROUP by co2.chat_room_no) last
+		    inner join chat c 
+		    on last.a = c.chat_no
+		    inner join chat_other co
+		    on co.chat_other_no = c.chat_other_no
+            where 
+            <![CDATA[ 
+            sysdate -7 < sent
+            ]]> 
+	</select>
+	
+	<select id="getRoomMember" parameterType="map" resultType="String">
+		select usr_id from chat_other co
+			where chat_room_no = #{no}
+			and usr_id != #{usr_id}
+	</select> 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

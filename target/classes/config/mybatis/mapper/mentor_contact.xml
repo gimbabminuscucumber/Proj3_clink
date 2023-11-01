@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mentor_contact">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="Mentor_Request">
+		insert into Mentor_Contact values(Mentor_Contact_seq.nextval,#{mentor},#{mentee},sysdate,0,null,null)
+	</insert>
+	
+	<select id="selectRequest" parameterType="String" resultType="map">
+		select * from Mentor_Contact where Mentor = #{member_id} and stat = 0
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete Mentor_Contact where Mentor_Contact_no = #{no}
+	</delete>
+	
+	<update id="accept" parameterType="int">
+		update Mentor_Contact set stat = 1,
+		start_date = sysdate 
+		where Mentor_Contact_no = #{no}
+	</update>
+	
+	<select id="getMyMentors" resultType="map" parameterType="String">
+		select mc.*,m.*,concat(first,last) name from mentor_contact mc
+		inner join member m
+		on mc.mentor = m.member_id
+		where mc.mentee = #{member_id} and stat != '0' and   end_Date is null 
+	</select>
+
+	<select id="getMyMentees" resultType="map" parameterType="String">
+select mc.*,m.*,concat(first,last) name from mentor_contact mc
+		inner join member m
+		on mc.mentee = m.member_id
+		where mc.mentor = 'wjdgmlfkr' and stat != '0' and end_Date is null 
+	</select>
+	
+	<update id="disconnect" parameterType="int">
+		update Mentor_Contact
+		set end_date = sysdate
+		where mentor_contact_no = #{cn}
+	</update>
+</mapper>

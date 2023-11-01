@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="createo_mng">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="insertUser" parameterType="business.createo_mng.CreateO_Mng_DTO">
+		insert into CreateO_Mng values(CreateO_Mng_seq.nextval,#{createo_mng_id},#{bmember_id},#{posi_mng_no},#{id},#{pw},#{salt})
+	</insert>
+	
+	<select id="getUserData" parameterType="String" resultType="business.createo_mng.CreateO_Mng_DTO">
+		select * from CreateO_Mng where id = #{id}
+	</select>
+	
+	<select id="getAllList" resultType="map" parameterType="map">
+		select cm.createo_mng_id id,cm.createo_mng_id,cm.name,pm.name pname from CreateO_Mng cm
+			inner join posi_mng pm
+			on cm.posi_mng_no = pm.posi_mng_no
+			where bmember_id = #{id}
+			<if test="my != null">
+            	and cm.createo_mng_id != #{my}
+			</if>
+	</select>
+	
+	<delete id="oneDelete" parameterType="String">
+		delete CreateO_Mng where createo_mng_id = #{id}
+	</delete>
+	
+</mapper>

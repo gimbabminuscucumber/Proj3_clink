@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+
+	<!-- 비즈니스 ============================================================================================================-->
+	<bean id="bmember_dao" class="business.bmember.Bmember_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean>
+	
+	<bean id="createo_mng_dao" class="business.createo_mng.CreateO_Mng_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="bpf_dao" class="business.bpf.Bpf_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="bcontact_dao" class="business.bcontact.Bcontact_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="bcontact_type_dao" class="business.bcontact_type.Bcontact_Type_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="bpf_url_dao" class="business.bpf_url.Bpf_Url_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+		
+	<bean id="bpf_sns_dao" class="business.bpf_sns.Bpf_SNS_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="depart_mng_dao" class="business.depart_mng.Depart_Mng_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="posi_mng_dao" class="business.posi_mng.Posi_Mng_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+		
+	<bean id="gradeo_mng_dao" class="business.gradeo_mng.GradeO_Mng_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 	
+	
+		
+	<!-- 채용공고 ============================================================================================================-->
+	<bean id="jpost_dao" class="jpost.jpost.Jpost_DAO">
+		<constructor-arg ref="sqlSession"/>		<!-- propoerty name과 constructor-arg 차이 -->
+	</bean>										<!-- 생성자의 매개변수 개수만큼 기입하고, 순서에 맞춰서 -->
+		
+	<bean id="jpost_detail_dao" class="jpost.jpost_detail.Jpost_Detail_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+
+	<bean id="apply_mng_dao" class="jpost.apply_mng.Apply_Mng_DAO">
+		<constructor-arg ref="sqlSession"/>		<!-- 회원이 제출한 지원서 관리 -->
+	</bean>	
+		
+		
+	<!-- 지원서 ============================================================================================================-->	
+	<bean id="apply_dao" class="member.apply.apply.Apply_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+		
+	<bean id="apply_list_dao" class="member.apply.apply_list.Apply_List_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+		
+	<bean id="apply_form_dao" class="member.apply.apply_form.Apply_Form_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+		
+	<bean id="apply_stat_dao" class="member.apply.apply_stat.Apply_Stat_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+
+	
+	<!-- 회원 ============================================================================================================-->
+	<bean id="member_dao" class="member.member.Member_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="ilchon_dao" class="member.ilchon.Ilchon_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="follow_dao" class="member.follow.Follow_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="mentor_apply_dao" class="member.mentor.mentor_apply.Mentor_Apply_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="mentor_contact_dao" class="member.mentor.mentor_contact.Mentor_Contact_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="mentor_grade_dao" class="member.mentor.mentor_grade.Mentor_Grade_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="mentor_grade_mng_dao" class="member.mentor.mentor_grade_mng.Mentor_Grade_Mng_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="mentor_review_dao" class="member.mentor.mentor_review.Mentor_Review_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+
+	<!-- 회원 프로필 ============================================================================================================-->
+	<bean id="career_dao" class="member.pf.career.Career_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="edu_dao" class="member.pf.edu.Edu_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="rest_dao" class="member.pf.rest.Rest_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="rest_rsn_dao" class="member.pf.rest_rsn.Rest_Rsn_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="cert_dao" class="member.pf.cert.Cert_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="inscert_dao" class="member.pf.inscert.Inscert_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="proj_dao" class="member.pf.proj.Proj_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="proj_entry_dao" class="member.pf.proj_entry.Proj_Entry_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+
+	<bean id="army_dao" class="member.pf.army.Army_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+
+	<bean id="vol_dao" class="member.pf.vol.Vol_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+
+	<bean id="thesis_dao" class="member.pf.thesis.Thesis_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+
+	<bean id="langskill_dao" class="member.pf.langskill.LangSkill_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+
+	<bean id="org_dao" class="member.pf.org.Org_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+
+	<bean id="jstat_dao" class="member.pf.jstat.Jstat_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="exam_dao" class="member.pf.exam.Exam_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="award_dao" class="member.pf.award.Award_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	
+	<!-- 추천서 ============================================================================================================-->
+	<bean id="rec_form_dao" class="member.recommand.rec_form.Rec_Form_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="rec_ask_dao" class="member.recommand.rec_ask.Rec_Ask_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="relation_dao" class="member.recommand.relation.Relation_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	
+	<!-- 채팅 ============================================================================================================-->
+	<bean id="chat_room_dao" class="chat.chat_room.Chat_Room_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="chat_other_dao" class="chat.chat_other.Chat_Other_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="chat_dao" class="chat.chat.Chat_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	
+	<!-- 기술평가 ============================================================================================================-->
+	<bean id="tech_test_dao" class="tech.tech_test.Tech_Test_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="tech_test_certi_dao" class="tech.tech_test_certi.Tech_Test_Certi_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="tech_test_qna_dao" class="tech.tech_test_qna.Tech_Test_QnA_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="tech_test_opt_dao" class="tech.tech_test_opt.Tech_Test_Opt_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="extest_pract_dao" class="tech.extest_pract.ExTest_Pract_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="extest_opt_dao" class="tech.extest_opt.ExTest_Opt_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+
+	<!-- 공통 테이블 ============================================================================================================-->
+	<bean id="empl_type_c_dao" class="cat.empl_type_c.Empl_Type_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>	
+	
+	<bean id="jarea_c_dao" class="cat.jarea_c.Jarea_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+		
+	<bean id="worktime_c_dao" class="cat.worktime_c.Worktime_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="city_c_dao" class="cat.city_c.City_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="posi_c_dao" class="cat.posi_c.Posi_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="school_c_dao" class="cat.school_c.School_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="lv_c_dao" class="cat.lv_c.Lv_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="socialact_c_dao" class="cat.socialact_c.Socialact_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="jstat_c_dao" class="cat.jstat_c.Jstat_C_DAO">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+	<bean id="homepg_type_c_dao" class="cat.homepg_type_c.Homepg_Type_C_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="sns_c_dao" class="cat.sns_c.SNS_C_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+	<bean id="actstat_c_dao" class="cat.actstat_c.ActStat_C_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+
+	<bean id="tech_name_c_dao" class="cat.tech_name_c.Tech_Name_C_DAO">
+		<constructor-arg name="sqlsession" ref="sqlSession"/>
+	</bean> 
+	
+</beans>

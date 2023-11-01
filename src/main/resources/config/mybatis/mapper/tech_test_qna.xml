@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech_test_qna">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getList" parameterType="int" resultType="tech.tech_test_qna.Tech_Test_QnA_DTO">
+		select * from Tech_Test_QnA where Tech_Test_no = #{no}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

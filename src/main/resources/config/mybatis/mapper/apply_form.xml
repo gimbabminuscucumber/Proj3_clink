@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apply_form">	
+
+	<insert id="insert" parameterType="member.apply.apply_form.Apply_Form_DTO">
+		insert into apply_form values(
+			#{apply_form_id},
+			'member_id1',		<!-- #{member_id}, -->
+			#{title},
+			#{detail}
+		)
+	</insert>
+
+	<select id="selectList" resultType="member.apply.apply_form.Apply_Form_DTO">
+		select *
+			from apply_form af
+	</select>
+	
+</mapper>

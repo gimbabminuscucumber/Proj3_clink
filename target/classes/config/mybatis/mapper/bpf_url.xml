@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bpf_url">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getUrlList" resultType="map" parameterType="String">
+		select bu.*,ht.name name2 from Bpf_Url bu inner join Homepg_Type_C ht on bu.homepg_type_cno = ht.homepg_type_cno where bmember_id = #{id}
+	</select>
+	
+	<insert id="insertUrl">
+		insert into Bpf_Url values(Bpf_Url_seq.nextval,#{homepg_type_cno},#{bmember_id},#{url},#{name})
+	</insert>
+	
+	<update id="update" parameterType="business.bpf_url.Bpf_Url_DTO">
+		update Bpf_Url set  name = #{name} ,
+			homepg_type_cno = #{homepg_type_cno},
+			url = #{url} where bpf_url_no = #{bpf_url_no}
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		delete Bpf_Url where bpf_url_no = #{no}
+	</delete> 
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

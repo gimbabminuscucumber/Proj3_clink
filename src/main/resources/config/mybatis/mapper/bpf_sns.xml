@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bpf_sns">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getSNSList" parameterType="String" resultType="map">
+		select * from Bpf_SNS bs inner join SNS_C sc on bs.sns_cno = sc.sns_cno  where bmember_id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="business.bpf_sns.Bpf_SNS_DTO">
+		insert into Bpf_SNS values(Bpf_SNS_seq.nextval,#{bmember_id},#{sns_cno},#{account})
+	</insert>
+	
+	<delete id="delete">
+		delete Bpf_SNS where Bpf_SNS_no = #{no}
+	</delete>
+	
+	<update id="update" parameterType="business.bpf_sns.Bpf_SNS_DTO">
+		update Bpf_SNS set account = #{account} ,
+		sns_cno = #{sns_cno}
+		where bpf_sns_no = #{bpf_sns_no}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

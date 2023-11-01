@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="extest_opt">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getList" resultType="tech.extest_opt.ExTest_Opt_DTO">
+		select * from ExTest_Opt where extest_pract_no = #{no}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

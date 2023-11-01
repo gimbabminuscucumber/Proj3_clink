@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="extest_pract">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getList" parameterType="int" resultType="tech.extest_pract.ExTest_Pract_DTO">
+		select * from ExTest_Pract where Tech_Test_no = #{key}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="relation">
+	
+	<insert id="insert" parameterType="member.recommand.relation.Relation_DTO">
+		insert into relation values(
+			relation_seq.naxtval,
+			#{relation}		
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.recommand.relation.Relation_DTO">
+		update relation set
+			relation = #{relation}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete relation
+			where relation_no = #{relation_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.recommand.relation.Relation_DTO">
+		select *
+			from relation
+	</select>
+	
+	
+</mapper>

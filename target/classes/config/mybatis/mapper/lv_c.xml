@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lv_c">
+
+	<select id="selectList" resultType="cat.lv_c.Lv_C_DTO">
+		select * 
+			from lv_c
+	</select>
+
+</mapper>

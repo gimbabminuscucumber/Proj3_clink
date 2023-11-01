@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rec_ask">
+	
+	<insert id="insert" parameterType="member.recommand.rec_ask.Rec_Ask_DTO">
+		insert into rec_ask values(
+			rec_ask_seq.nextval,	<!-- #{rec_ask_no} -->
+			#{rec_ask_id},
+			'member_no3',			<!-- #{member_no} -->
+			#{to_member},	
+			#{content, jdbcType=VARCHAR},
+			sysdate,
+			#{relation_no}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.recommand.rec_ask.Rec_Ask_DTO">
+		update rec_ask set
+			to_member = #{to_member},
+			content = #{content},
+			relation_no =#{relation_no}
+			where rec_ask_id = #{rec_ask_id}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete rec_ask
+			where rec_ask_id = #{rec_ask_id}
+	</delete>
+	
+	<select id="selectList" resultType="member.recommand.rec_ask.Rec_Ask_DTO" parameterType="map">
+		select *
+			from rec_ask a
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+			
+			where a.rec_ask_id = #{rec_ask_id}
+			
+	</select>
+	
+	<!-- content랑 동일함, 둘 중 하나만 사용하기 -->
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from rec_ask a
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+			
+			where a.rec_ask_id = #{rec_ask_id}
+	</select>
+	
+	<select id="content" resultType="map" parameterType="String">
+		select *
+			from rec_ask a
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+			
+			where a.rec_ask_id = #{rec_ask_id}
+	</select>
+	
+	<select id="rec_askList" resultType="map">
+		select *
+			from rec_ask a
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+	</select>
+
+</mapper>

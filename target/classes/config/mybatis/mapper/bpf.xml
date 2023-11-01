@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bpf">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getOneProfile" parameterType="String" resultType="business.bpf.Bpf_DTO">
+		select * from Bpf where bmember_id = #{bmemberid}
+	</select>
+	
+	<insert id="insertProfile" parameterType="business.bpf.Bpf_DTO">
+		insert into Bpf values(
+		Bpf_seq.nextval,
+		#{bpf_id,jdbcType=VARCHAR},
+		#{bmember_id,jdbcType=VARCHAR},
+		null,	
+		#{hit},
+		sysdate,
+		#{content,jdbcType=VARCHAR},
+		#{empl_cnt},
+		#{expert,jdbcType=VARCHAR},
+		#{hp,jdbcType=VARCHAR},
+		#{extb,jdbcType=DATE},
+		#{detail,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateProfile" parameterType="business.bpf.Bpf_DTO">
+		update Bpf set content = #{content,jdbcType=VARCHAR},
+		empl_cnt = #{empl_cnt,jdbcType=INTEGER},
+		hp = #{hp,jdbcType=VARCHAR},
+		extb = #{extb,jdbcType=DATE},
+		expert = #{expert,jdbcType=VARCHAR},
+		detail = #{detail,jdbcType=VARCHAR} where bpf_id = #{bpf_id}
+		
+	</update>
+	
+	<update id="updateLogo" parameterType="map">
+		update Bpf set logo = #{logo} where bmember_id = #{id}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

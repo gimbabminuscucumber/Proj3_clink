@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mentor_apply">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="insert" parameterType="member.mentor.mentor_apply.Mentor_Apply_DTO">
+		insert into Mentor_Apply values(Mentor_Apply_seq.nextval,#{member_id},#{email},#{bus_card})
+	</insert>
+	
+	<select id="getMentorList" resultType="map" parameterType="String">
+		select * from member m
+				where mentor = 1 
+				and member_id != #{member_id} 
+				and member_id not in(select  mentor from mentor_contact 
+				where mentee = #{member_id} and end_date is null)
+	</select>
+	
+	
+	
+</mapper>

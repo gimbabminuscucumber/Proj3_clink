@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="apply">
+	
+	<insert id="insert" parameterType="member.apply.apply.Apply_DTO">
+		insert into apply values(
+			#{apply_id},
+			'member_id1',		<!-- #{member_id} -->
+			1,					<!-- #{apply_stat_no} -->	
+			#{apply_form_id},
+			sysdate
+		)
+	</insert>
+	
+	<update id="hidden" parameterType="member.apply.apply.Apply_DTO" >
+		update apply set
+			apply_stat_no = 0
+			where apply_id = #{apply_id}
+	</update>
+	
+	<update id="update" parameterType="member.apply.apply.Apply_DTO">
+		update apply set
+			apply_date = sysdate
+			where apply_id = #{apply_id}
+	</update>
+	
+	<select id="selectList" resultType="member.apply.apply.Apply_DTO">
+		select *
+			from apply a
+	</select>
+	
+	<select id="selectOne" parameterType="String" resultType="map">
+		select *
+			from apply a
+			inner join apply_form af
+			on a.apply_form_id = af.apply_form_id
+			
+			where a.apply_id = #{apply_id}
+			and a.apply_stat_no = 1
+	</select>
+	
+	<select id="getContent" parameterType="String" resultType="map">
+		select *
+			from apply a
+			inner join apply_form af
+			on a.apply_form_id = af.apply_form_id
+			
+<!-- 			inner join member m -->
+<!-- 			on a.member_id = m.member_id -->
+			
+			where a.apply_id = #{apply_id}
+			and a.apply_stat_no = 1
+	</select>
+	
+	<!-- apply / apply_form 칼럼 사용 -->
+	<select id="apply_vo" resultType="map">
+		select *
+			from apply a
+			inner join apply_form af
+			on a.apply_form_id = af.apply_form_id
+
+            where a.apply_stat_no = 1
+			order by a.apply_date desc
+	</select>
+
+	<select id="submit_vo" resultType="map">
+		select *
+			from apply a
+			inner join apply_form af
+			on a.apply_form_id = af.apply_form_id
+			
+			order by a.apply_date desc
+	</select>
+	
+</mapper>

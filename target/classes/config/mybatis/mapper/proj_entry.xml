@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj_entry">
+	
+	<insert id="insert" parameterType="member.pf.proj_entry.Proj_Entry_DTO">
+		insert into proj_entry values(
+			#{proj_entry_no},
+			'proj_no2',				<!-- #{proj_no} -->
+			#{member_no}			<!-- #{member_no} -->
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.proj_entry.Proj_Entry_DTO">
+		update proj_entry set
+			member_no = #{member_no}
+			where proj_entry_no = #{proj_entry_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete proj_entry
+			where proj_entry_no = #{proj_entry_no}
+	</delete>
+	
+	
+	<select id="selectList" resultType="member.pf.proj_entry.Proj_Entry_DTO">
+		select *
+			from proj_entry
+	</select>
+	
+</mapper>

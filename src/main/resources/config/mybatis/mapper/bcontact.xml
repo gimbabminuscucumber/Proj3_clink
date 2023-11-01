@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bcontact">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="getOneBcontact" parameterType="java.lang.String" resultType="map">
+		select b.bcontact_no,bt.type,b.contact,b.bcontact_type_no 
+		from Bcontact b 
+		inner join Bcontact_Type bt 
+		on b.bcontact_type_no = bt.bcontact_type_no  
+		where bmember_id = #{id} order by bcontact_no
+	</select>
+	
+	<insert id="insert" parameterType="business.bcontact.Bcontact_DTO">
+		insert into Bcontact values(Bcontact_seq.nextval,#{bmember_id},#{bcontact_type_no},#{contact})
+	</insert>
+	
+	<delete id="deleteContact" parameterType="int">
+		delete Bcontact where bcontact_no = #{no}
+	</delete>
+	
+	<update id="update" parameterType="business.bcontact.Bcontact_DTO">
+		update Bcontact set bcontact_type_no = #{bcontact_type_no} , contact = #{contact} where bcontact_no = #{bcontact_no}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="thesis">
+	
+	<insert id="insert" parameterType="member.pf.thesis.Thesis_DTO">
+		insert into thesis values(
+			#{thesis_no},
+			'pf_no1', 			<!-- #{pf_no},  -->
+			'member_no1',		<!-- #{member_no}, -->
+			#{title},
+			#{publisher},
+			#{writer}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.thesis.Thesis_DTO">
+		update thesis set
+			titel = #{title},
+			publisher = #{publisher},
+			writer = #{writer}
+			where thesis_no = #{thesis_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete thesis
+			where thesis_no = #{thesis_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.thesis.Thesis_DTO" parameterType="String">
+		select *
+			from thesis
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from thesis t
+			where t.thesis_no = #{thesis_no}
+	</select>
+	
+	<select id="thesisList" resultType="map">
+		select *
+			from thesis
+	</select>
+	
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat">
+	<!-- SQL문들을 작성하는 파일 -->
+ 	<insert id="sendChat" parameterType="chat.chat.Chat_DTO">
+		insert into Chat values(Chat_seq.nextval,#{chat_other_no},0,0,#{stat},#{detail},
+		<choose>
+			<when test="stat == 1"> sysdate</when>
+			<otherwise>null</otherwise>
+		</choose>
+		,sysdate,#{chat_file,jdbcType=VARCHAR},0)
+	</insert>
+	
+	<select id="getRoomChat" parameterType="int" resultType="map">
+		select detail , co.chat_other_no, sent , stat from chat c
+			inner join chat_other co
+			on c.chat_other_no = co.chat_other_no
+			where co.chat_room_no = #{key} 
+			order by chat_no
+	</select> 
+	
+	<update id="statUp" parameterType="map">
+		update chat
+			set stat = 1, 
+			receive = sysdate where chat_no in <!-- 두 행을 한번에 처리할땐 in -->
+				(select * from 
+						(select c.chat_no from chat_other co 
+						inner join chat c 
+						on co.chat_other_no = c.chat_other_no 
+						where chat_room_no = #{room_no} and usr_id != #{usr_id} 
+						order by sent desc)a)
+	</update>
+</mapper>

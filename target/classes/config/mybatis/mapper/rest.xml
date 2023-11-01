@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rest">
+	
+	<insert id="insert" parameterType="member.pf.rest.Rest_DTO">
+		insert into rest values(
+			#{rest_no},
+			'pf_no1',		<!-- #{pf_no} -->
+			'member_no1',	<!-- #{member_no} -->
+			#{rest_rsn_no},	
+			#{stat},
+			#{start_date},
+			#{end_date},
+			#{text}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.rest.Rest_DTO">
+		update rest set
+			text=#{text}
+			where rest_no = #{rest_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete rest
+			where rest_no = #{rest_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.rest.Rest_DTO" parameterType="String">
+		select *
+			from rest
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from rest r
+			
+			inner join rest_rsn rs
+			on r.rest_rsn_no = rs.rest_rsn_no
+			
+			where r.rest_no = #{rest_no}
+	</select>
+	
+	<select id="restList" resultType="map">
+		select *
+			from rest r
+			inner join rest_rsn rs
+			on r.rest_rsn_no = rs.rest_rsn_no
+	</select>
+	
+</mapper>

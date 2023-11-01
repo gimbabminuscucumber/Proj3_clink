@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- SQL문들을 작성하는 파일 -->
+	<select id="imsi" resultType="member.member.Member_DTO">
+		select * from Member where member_no = 0
+	</select>
+	
+	<select id="getdata" parameterType="member.member.Member_DTO" resultType="member.member.Member_DTO">
+		select * from member where member_id = #{member_id} and pw = #{pw}
+	</select>
+	
+	<update id="updateMentor" parameterType="String">
+		update Member set mentor = 1 where member_id = #{member_ids}
+	</update>
+	
+	<select id="getList" parameterType="map" resultType="map">
+		select * from (select m.*,concat(first,last)d from member m) a where  a.d like '%'||#{keyword}||'%' and a.member_id != #{member_id} order by a.d
+	</select>
+	
+	
+	<select id="checkLogin" resultType="int" parameterType="member.member.Member_DTO">
+		select no from member where member_id=#{memberId} and password=#{password}
+	</select>
+	
+	<select id="findId" resultType="String" parameterType="member.member.Member_DTO">
+		select member_id from member where name = #{name} and tel1 = #{tel1} and tel2 = #{tel2} and tel3 = #{tel3}
+	</select>
+	
+	<select id="findPw" resultType="String" parameterType="member.member.Member_DTO">
+		select password from member where member_id=#{memberId} and name = #{name} and tel1 = #{tel1} and tel2 = #{tel2} and tel3 = #{tel3}
+	</select>
+	
+	<insert id="insert" parameterType="member.member.Member_DTO">
+		insert into member values(member_seq.nextval,#{memberId},#{password},#{name},#{email},#{tel1},#{tel2},#{tel3})
+	</insert>
+	
+	<select id="selectOne" parameterType="int" resultType="member.member.Member_DTO">
+		select * from member where member_no=#{memberNo}
+	</select>
+	
+	<update id="update" parameterType="member.member.Member_DTO">
+		update member set email=#{email},tel1=#{tel1},tel2=#{tel2},tel3=#{tel3} where member_no=#{memberNo}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete member where member_no=#{memberNo}
+	</delete>
+	
+	<select id="checkId" parameterType="String" resultType="String">
+		select member_id from member where member_id=#{memberId}
+	</select>
+	
+	<select id="seleceUserId" parameterType="int" resultType="String">
+		select member_id from member where member_no=#{memberNo}
+	</select>
+	
+</mapper>

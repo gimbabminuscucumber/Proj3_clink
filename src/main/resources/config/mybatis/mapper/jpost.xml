@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jpost">	<!-- dao의 return 파라미터에서 사용되는 값  -->
+
+	<insert id="insert" parameterType="jpost.jpost.Jpost_DTO">	<!-- 초기값(nextval, sysdate... )은 해당 insert문이 실행되면서 생성됨 -->
+		insert into jpost values(
+			jpost_seq.nextval,
+			#{jpost_id},
+			'bmember_id1',		<!-- bmember_id -->
+			#{howto},
+			#{title},
+			#{detail},
+			#{start_date},
+			#{end_date}, 
+			#{locate},
+			sysdate, 			<!-- #{post_date}, -->
+			#{stat},			
+			#{url, jdbcType=VARCHAR}, <!-- null이 들어가는 자리에 오류 발생을 잡기 위해서 사용 -->
+			#{file_name, jdbcType=VARCHAR},
+			#{hit},				
+			1 					<!-- #{vision} -->	<!-- oracle에서 default 1을 주는데도 insert 칼럼이 #{vision} 이면 0이 들어가는 이유는?? -->		
+		)		
+	</insert>
+	
+	<select id="update" parameterType="jpost.jpost.Jpost_DTO">
+		update jpost set
+			howto = #{howto},
+			title = #{title},
+			detail = #{detail},
+			start_date = #{start_date},
+			end_date = #{end_date},
+			locate = #{locate},
+			url = #{url,jdbcType=VARCHAR},
+			file_name = #{file_name,jdbcType=VARCHAR}
+			where jpost_id = #{jpost_id}				<!-- 고유번호 불러와야함 (update.jsp > input type="hidden" > vo.jpost 의 생성자에 jpost_id 추가) -->
+	</select>
+	
+	<select id="hidden" parameterType="String">			<!-- 삭제버튼 클릭시, 숨김 처리 -->
+		update jpost set
+			vision = 0
+			where jpost_id = #{jpost_id}
+	</select> 
+	
+	<select id="selectList" resultType="jpost.jpost.Jpost_DTO" parameterType="map">	<!-- resultType은 반환하려는 '클래스'이기 때문에 반환하려는 VO 클래스의 경로를 찍어야함 -->
+		select j.*, b.name, b.en_name, b.email									<!-- - int 의 경우, java,lang,Integer 이지만 통상적으로 int를 사용 -->
+			from jpost j, bmember b
+			where j.bmember_id = b.bmember_id
+			and j.vision != 0
+			order by j.post_date desc
+	</select>
+	
+	<!-- 미사용 select문 == getContent 와 동일-->
+	<select id="selectOne" resultType="map" parameterType="String">		<!-- 특정 채용공고를 보는거 -->
+		select j.*, d.*, e.*, wt.*, ja.*
+			from jpost j
+			inner join jpost_detail d
+			on j.jpost_id = d.jpost_id
+			
+			inner join empl_type_c e
+			on d.empl_type_cno = e.empl_type_cno
+			
+			inner join worktime_c wt
+			on wt.worktime_cno = d.worktime_cno
+			
+			inner join jarea_c ja
+			on ja.jarea_cno = d.jarea_cno
+			
+			where j.jpost_id = #{jpost_id}
+			and j.vision != 0
+	</select>
+	
+	<select id="hitCnt" parameterType="jpost.jpost.Jpost_DTO">				<!-- 조회수 증가 -->
+		update jpost set
+			hit = hit + 1
+			where jpost_id = #{jpost_id}
+	</select>
+	
+	<select id="getContent" parameterType="String" resultType="map">	<!-- 지원서를 보는거 / 수정 필요 -->
+		select *
+			from jpost j
+			
+            inner join jpost_detail d
+			on j.jpost_id = d.jpost_id
+			
+            inner join empl_type_c e
+			on d.empl_type_cno = e.empl_type_cno
+			
+            inner join worktime_c wt
+			on wt.worktime_cno = d.worktime_cno
+			
+            inner join jarea_c ja
+			on ja.jarea_cno = d.jarea_cno
+			
+			inner join lv_c l
+			on d.lv_cno = l.lv_cno
+			
+			inner join school_c s
+			on d.school_cno = s.school_cno
+			
+			inner join posi_c p
+			on d.posi_cno = p.posi_cno
+			
+			where j.jpost_id = #{jpost_id}
+			and j.vision != 0
+	</select>
+	
+	<!-- 연관된 테이블의 모든 칼럼 데이터 -->
+	<select id="all_list" resultType="map">			
+		select *
+			from jpost j
+			
+            inner join jpost_detail d
+			on j.jpost_id = d.jpost_id
+			
+            inner join empl_type_c e
+			on d.empl_type_cno = e.empl_type_cno
+			
+            inner join worktime_c wt
+			on wt.worktime_cno = d.worktime_cno
+			
+            inner join jarea_c ja
+			on ja.jarea_cno = d.jarea_cno
+			
+			inner join lv_c l
+			on d.lv_cno = l.lv_cno
+			
+			inner join school_c s
+			on d.school_cno = s.school_cno
+			
+			inner join posi_c p
+			on d.posi_cno = p.posi_cno
+			
+			where j.vision != 0
+	</select>
+	
+	<select id="getNo" resultType="int">
+		select jpost_seq.nextval from dual
+	</select>
+	
+	<select id="jpostList" resultType="jpost.jpost.Jpost_DTO" parameterType="String">
+		select *
+			from jpost j
+			
+			inner join jpost_detail d
+			on j.jpost_id = d.jpost_id
+			
+			where j.jpost_id = #{jpost_id}
+			and j.vision != 0
+	</select>
+	
+	<select id="jpostTimeList" resultType="jpost.jpost.Jpost_DTO" >
+		select *
+			from jpost
+	</select>
+	
+	
+</mapper>

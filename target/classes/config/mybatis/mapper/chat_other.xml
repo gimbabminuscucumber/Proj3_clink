@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chat_other">
+	<!-- SQL문들을 작성하는 파일 -->
+ 	<insert id="joinRoom" parameterType="map">
+		insert into chat_other values(
+			chat_other_seq.nextval,
+			#{nextNum},
+			#{usr_id}
+		)
+	</insert>
+	
+	<select id="getroomMyNo" parameterType="map" resultType="chat.chat_other.Chat_Other_DTO">
+		select * from chat_other 
+			where usr_id = #{my} 
+			and chat_room_no = #{roomno}
+	</select>
+	
+	<select id="getMember" resultType="map" parameterType="map">
+		select co.chat_other_no,co.usr_id,case 
+			when substr(usr_id,0,5) = 'BBMXX' then (select name from bmember where bmember_id = usr_id) 
+            when substr(usr_id,0,5) = 'BCRMX' then (select name from createo_mng where createo_mng_id = usr_id)
+            when substr(usr_id,0,5) = 'BCRMX' then (select concat(m.first_name,m.last_name) from member m where member_id = usr_id) end name
+        from chat_other co
+		where chat_room_no = #{roomno} and usr_id != #{my}
+	</select>	
+	
+	<select id="getOneOther" resultType="map" parameterType="int">
+		select concat(first,last)name from chat_other
+			inner join member m
+			on usr_id = m.member_id
+			where chat_other_no = #{no}
+	</select> 
+	
+</mapper>
+

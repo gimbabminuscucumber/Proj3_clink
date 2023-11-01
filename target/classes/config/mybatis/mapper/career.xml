@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="career">
+	
+	<insert id="insert" parameterType="member.pf.career.Career_DTO">
+		insert into career values(
+			#{career_no},
+			'pf_no1',			<!-- #{pf_no}, -->
+			'member_no1',		<!-- #{member_no} -->
+			#{company},
+			#{posi},
+			#{task},
+			#{empl_type_cno},
+			#{city_cno},
+			#{stat},
+			#{jarea_cno},
+			#{start_date},
+			#{end_date, jdbcType=DATE} <!-- null 넣는거 -->
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.career.Career_DTO">
+		update career set
+			company=#{company},
+			posi=#{posi},
+			task=#{task},
+			empl_type_cno=#{empl_type_cno},
+			city_cno=#{city_cno},
+			stat=#{stat},
+			jarea_cno=#{jarea_cno},
+			start_date=#{start_date},
+			end_date=#{end_date}
+			where career_no = #{career_no}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete career
+			where career_no = #{career_no}
+	</delete>
+
+
+	<select id="selectList" resultType="member.pf.career.Career_DTO" parameterType="String">
+		select *
+			from career
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from career c
+			inner join city_c t
+			on c.city_cno = t.city_cno
+			
+			inner join jarea_c j
+			on c.jarea_cno = j.jarea_cno
+			
+			inner join empl_type_c e
+			on c.empl_type_cno = e.empl_type_cno
+			
+			where c.career_no = #{career_no}
+	</select>
+	
+	
+	<select id="careerList" resultType="map">
+		select *
+			from career c
+			
+			inner join empl_type_c e
+			on e.empl_type_cno = c.empl_type_cno
+			
+			inner join city_c t
+			on t.city_cno = c.city_cno
+			
+			inner join jarea_c j
+			on j.jarea_cno = c.jarea_cno
+			
+	</select>
+	
+</mapper>

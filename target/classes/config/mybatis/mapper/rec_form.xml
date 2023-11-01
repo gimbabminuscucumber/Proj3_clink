@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rec_form">
+	
+	<insert id="insert" parameterType="member.recommand.rec_form.Rec_Form_DTO">
+		insert into rec_form values(
+			rec_form_seq.nextval,
+			#{rec_form_id},
+			'pf_no2',				<!-- #{pf_no} -->
+			#{rec_ask_id},
+			'member_no2',			<!-- #{member_no} -->
+			#{detail},
+			sysdate
+		)
+	</insert>
+	
+	<update id="update" parameterType="member.recommand.rec_form.Rec_Form_DTO">
+		update rec_form set
+			detail = #{detail}
+			where rec_form_id = #{rec_form_id}
+	</update>
+		
+	<delete id="delete" parameterType="String">
+		delete rec_form
+			where rec_form_id = #{rec_form_id}
+	</delete>
+	
+	<select id="selectList" resultType="member.recommand.rec_form.Rec_Form_DTO">
+		select *
+			from rec_form
+	</select>
+	
+	<!-- 미사용, content와 동일, 삭제 가능 -->
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from rec_form f
+			where f.rec_form_id = #{rec_form_id}
+	</select>
+	
+	<select id="content" resultType="map" parameterType="String">
+		select *
+			from rec_form f
+			
+			inner join rec_ask a
+			on a.rec_ask_id = f.rec_ask_id
+			
+			inner join relation r
+			on a.relation_no = r.relation_no 
+			
+			where f.rec_form_id = #{rec_form_id}
+	</select>
+	
+	<select id="rec_formList" resultType="map">
+		select *
+			from rec_form f
+			
+			inner join rec_ask a
+			on a.rec_ask_id = f.rec_ask_id
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+	</select>
+	
+	<select id="rec_all" resultType="map" parameterType="String">
+		select *
+			from rec_form f
+			
+			inner join rec_ask a
+			on a.rec_ask_id = f.rec_ask_id
+			
+			inner join relation r
+			on a.relation_no = r.relation_no
+			
+			where f.rec_ask_id = #{rec_ask_id}
+	</select>
+	
+</mapper>

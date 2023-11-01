@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jstat">
+	
+	<insert id="insert" parameterType="member.pf.jstat.Jstat_DTO">
+		insert into jstat values(
+			#{jstat_no},
+			'member_no1',		<!-- #{member_no}, -->
+			#{jstat_cno}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.jstat.Jstat_DTO">
+		update jstat set
+			jstat_cno = #{jstat_cno}
+			where jstat_no = #{jstat_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete jstat
+			where jstat_no = #{jstat_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.jstat.Jstat_DTO" parameterType="String">
+		select *
+			from jstat
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from jstat v
+			where v.jstat_no = #{jstat_no}
+	</select>
+	
+	<select id="jstatList" resultType="map">
+		select *
+			from jstat
+	</select>
+	
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mentor_grade">
+	<!-- SQL문들을 작성하는 파일 -->
+	<insert id="createGrade" parameterType="String">
+		insert into Mentor_Grade values(Mentor_Grade_seq.nextval,#{member_id},1,0)
+	</insert>
+	
+	<select id="getMenteeGrade" parameterType="String" resultType="member.mentor.mentor_grade.Mentor_Grade_DTO">
+		select * from Mentor_grade where member_id = #{member_id}
+	</select>
+	
+	<update id="update" parameterType="member.mentor.mentor_grade.Mentor_Grade_DTO">
+		update Mentor_Grade set Mentor_Grade_Mng_no = (select * from (select mgm.mentor_grade_mng_no from Mentor_grade_mng mgm 
+	        <![CDATA[
+	        where score <= #{score}
+	        ]]>
+	        order by mgm.score desc)
+	        where rownum = 1)
+		,score = #{score}
+		where mentor_grade_no = #{mentor_grade_no}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

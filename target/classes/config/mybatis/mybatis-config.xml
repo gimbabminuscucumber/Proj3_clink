@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+	</settings>
+	
+	<typeAliases>
+		<!-- <typeAlias type="vo.BoardVo" alias="board"/> -->
+		<typeAlias type="member.pf.vol.Vol_DTO" alias="vol"/>
+		<typeAlias type="member.pf.thesis.Thesis_DTO" alias="thesis"/>
+		<typeAlias type="member.pf.award.Award_DTO" alias="award"/>
+		<typeAlias type="member.pf.exam.Exam_DTO" alias="exam"/>
+		<typeAlias type="member.pf.langskill.LangSkill_DTO" alias="langskill"/>
+		<typeAlias type="member.pf.org.Org_DTO" alias="org"/>
+		<typeAlias type="member.pf.jstat.Jstat_DTO" alias="jstat"/>
+		<typeAlias type="member.pf.army.Army_DTO" alias="army"/>
+		<typeAlias type="member.pf.career.Career_DTO" alias="career"/>
+		<typeAlias type="member.pf.cert.Cert_DTO" alias="cert"/>
+		<typeAlias type="member.pf.edu.Edu_DTO" alias="edu"/>
+		<typeAlias type="member.pf.inscert.Inscert_DTO" alias="inscert"/>
+		<typeAlias type="member.pf.proj_entry.Proj_Entry_DTO" alias="projEntry"/>
+		<typeAlias type="member.pf.proj.Proj_DTO" alias="proj"/>
+		<typeAlias type="member.pf.rest_rsn.Rest_Rsn_DTO" alias="restRsn"/>
+		<typeAlias type="member.pf.rest.Rest_DTO" alias= "rest"/>
+		
+		<typeAlias type="cat.city_c.City_C_DTO" alias="cityC"/>
+		<typeAlias type="cat.empl_type_c.Empl_Type_C_DTO" alias="emplTypeC"/>
+		<typeAlias type="cat.jarea_c.Jarea_C_DTO" alias="jareaC"/>
+		<typeAlias type="cat.worktime_c.Worktime_C_DTO" alias= "worktimeC"/>
+	</typeAliases>
+	
+	<mappers>
+		<!-- 기업 -->
+		<mapper resource="config/mybatis/mapper/bmember.xml"/>
+		<mapper resource="config/mybatis/mapper/bpf.xml"/>
+		<mapper resource="config/mybatis/mapper/bpf_url.xml"/>
+		<mapper resource="config/mybatis/mapper/bpf_sns.xml"/>
+		<mapper resource="config/mybatis/mapper/bcontact.xml"/>
+		<mapper resource="config/mybatis/mapper/bcontact_type.xml"/>
+		<mapper resource="config/mybatis/mapper/createo_mng.xml"/>
+		<mapper resource="config/mybatis/mapper/depart_mng.xml"/>
+		<mapper resource="config/mybatis/mapper/posi_mng.xml"/>
+		<mapper resource="config/mybatis/mapper/gradeo_mng.xml"/>
+
+		<!-- 채용공고 -->		
+		<mapper resource="config/mybatis/mapper/jpost.xml"/>
+		<mapper resource="config/mybatis/mapper/jpost_detail.xml"/>
+
+		<!-- 회원 테이블 -->
+		<mapper resource="config/mybatis/mapper/member.xml"/>
+		<mapper resource="config/mybatis/mapper/ilchon.xml"/>
+		<mapper resource="config/mybatis/mapper/follow.xml"/>
+		
+		<!-- 회원 테이블_멘토 -->
+		<mapper resource="config/mybatis/mapper/mentor_apply.xml"/>
+		<mapper resource="config/mybatis/mapper/mentor_contact.xml"/>
+		<mapper resource="config/mybatis/mapper/mentor_grade.xml"/>
+		<mapper resource="config/mybatis/mapper/mentor_grade_mng.xml"/>
+		<mapper resource="config/mybatis/mapper/mentor_review.xml"/>
+		
+		<!-- 회원 테이블_프로필 -->
+<!-- 		<mapper resource="config/mybatis/mapper/pf.xml"/> -->
+		<mapper resource="config/mybatis/mapper/vol.xml"/>
+		<mapper resource="config/mybatis/mapper/thesis.xml"/>
+		<mapper resource="config/mybatis/mapper/award.xml"/>	
+		<mapper resource="config/mybatis/mapper/exam.xml"/>
+		<mapper resource="config/mybatis/mapper/langskill.xml"/>
+		<mapper resource="config/mybatis/mapper/org.xml"/>
+		<mapper resource="config/mybatis/mapper/jstat.xml"/>
+		<mapper resource="config/mybatis/mapper/rest_rsn.xml"/>
+		<mapper resource="config/mybatis/mapper/rest.xml"/>
+		<mapper resource="config/mybatis/mapper/career.xml"/>			<!-- 회원 프로필_경력 -->
+		<mapper resource="config/mybatis/mapper/edu.xml"/>				<!-- 회원 프로필_교육 -->
+		<mapper resource="config/mybatis/mapper/rest.xml"/>				<!-- 회원 프로필_휴식기 -->
+		<mapper resource="config/mybatis/mapper/rest_rsn.xml"/>			<!-- 회원 프로필_휴식기 사유 -->
+		<mapper resource="config/mybatis/mapper/cert.xml"/>				<!-- 회원 프로필_자격증 -->
+		<mapper resource="config/mybatis/mapper/inscert.xml"/>			<!-- 회원 프로필_수료증 -->
+		<mapper resource="config/mybatis/mapper/proj.xml"/>				<!-- 회원 프로필_프로젝트 -->
+		<mapper resource="config/mybatis/mapper/proj_entry.xml"/>		<!-- 회원 프로필_프로젝트 참가자 -->
+		<mapper resource="config/mybatis/mapper/army.xml"/>	
+
+		<!-- 회원 테이블_지원서 -->		
+		<mapper resource="config/mybatis/mapper/apply.xml"/>
+		<mapper resource="config/mybatis/mapper/apply_form.xml"/>
+		<mapper resource="config/mybatis/mapper/apply_list.xml"/>
+		<mapper resource="config/mybatis/mapper/apply_mng.xml"/>
+		<mapper resource="config/mybatis/mapper/apply_stat.xml"/>
+		
+		<!-- 회원 테이블_추천서 -->		
+		<mapper resource="config/mybatis/mapper/rec_ask.xml"/>
+		<mapper resource="config/mybatis/mapper/rec_form.xml"/>
+		<mapper resource="config/mybatis/mapper/relation.xml"/>
+		
+		<!--  공통 테이블  -->
+		<mapper resource="config/mybatis/mapper/city_c.xml"/>
+		<mapper resource="config/mybatis/mapper/homepg_type_c.xml"/>
+		<mapper resource="config/mybatis/mapper/sns_c.xml"/>
+		<mapper resource="config/mybatis/mapper/actstat_c.xml"/>
+		<mapper resource="config/mybatis/mapper/tech_name_c.xml"/>
+		<mapper resource="config/mybatis/mapper/jarea_c.xml"/>
+		<mapper resource="config/mybatis/mapper/worktime_c.xml"/>
+		<mapper resource="config/mybatis/mapper/empl_type_c.xml"/>
+		<mapper resource="config/mybatis/mapper/socialact_c.xml"/>
+		<mapper resource="config/mybatis/mapper/lv_c.xml"/>
+		<mapper resource="config/mybatis/mapper/posi_c.xml"/>
+		<mapper resource="config/mybatis/mapper/school_c.xml"/>
+		
+		<!-- 채팅 -->
+		<mapper resource="config/mybatis/mapper/chat_other.xml"/>
+		<mapper resource="config/mybatis/mapper/chat_room.xml"/>
+		<mapper resource="config/mybatis/mapper/chat.xml"/>
+		
+		<!-- 기술평가 -->
+		<mapper resource="config/mybatis/mapper/tech_test.xml"/>
+		<mapper resource="config/mybatis/mapper/tech_test_certi.xml"/>
+		<mapper resource="config/mybatis/mapper/tech_test_qna.xml"/>
+		<mapper resource="config/mybatis/mapper/tech_test_opt.xml"/>
+		<mapper resource="config/mybatis/mapper/extest_pract.xml"/>
+		<mapper resource="config/mybatis/mapper/extest_opt.xml"/>
+		
+		<!-- <mapper resource="config/mybatis/mapper/board_select.xml" />
+		<mapper resource="config/mybatis/mapper/board_insert.xml" />
+		<mapper resource="config/mybatis/mapper/board_update.xml" />
+		<mapper resource="config/mybatis/mapper/board_delete.xml" /> -->
+	</mappers>
+</configuration>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam">
+	
+	<insert id="insert" parameterType="member.pf.exam.Exam_DTO">
+		insert into exam values(
+			#{exam_no},
+			'pf_no1',		<!-- #{pf_no} -->
+			'member_no1',	<!-- #{member_no} -->
+			#{jarea_cno},
+			#{legi},
+			#{name},
+			#{score},
+			#{lv},
+			#{exam_date},
+			#{detail}
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.exam.Exam_DTO">
+		update exam set
+			jarea_cno = #{jarea_cno},
+			legi = #{legi},
+			name = #{name},
+			score = #{score},
+			lv = #{lv},
+			exam_date = #{exam_date}, 
+			detail = #{detail}
+			where exam_no = #{exam_no}
+	</select>	
+		
+	<delete id="delete" parameterType="String">
+		delete exam
+			where exam_no = #{exam_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.exam.Exam_DTO" parameterType="String">
+		select *
+			from exam
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *	
+			from exam
+			where exam_no = #{exam_no}
+	</select>
+	
+	<select id="examList" resultType="map">
+		select *
+			from exam
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

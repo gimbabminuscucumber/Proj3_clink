@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vol">
+	
+	<insert id="insert" parameterType="member.pf.vol.Vol_DTO">
+		insert into vol values(
+			#{vol_no},
+			'pf_no1', 		<!-- #{pf_no},  -->
+			'member_no1',	<!-- #{member_no}, -->
+			#{org},
+			#{content},
+			#{stat},
+			#{start_date},
+			#{end_date, jdbcType=VARCHAR},
+			#{detail}		
+		)
+	</insert>
+	
+	<select id="update" parameterType="member.pf.vol.Vol_DTO">
+		update vol set
+			org = #{org},
+			content = #{content},
+			stat = #{stat},
+			start_date = #{start_date},
+			end_date = #{end_date, jdbcType=VARCHAR},
+			detail = #{detail}	
+			where vol_no = #{vol_no}
+	</select>
+		
+	<delete id="delete" parameterType="String">
+		delete vol
+			where vol_no = #{vol_no}
+	</delete>
+	
+	<select id="selectList" resultType="member.pf.vol.Vol_DTO" parameterType="String">
+		select *
+			from vol
+	</select>
+	
+	<select id="selectOne" resultType="map" parameterType="String">
+		select *
+			from vol v
+			where v.vol_no = #{vol_no}
+	</select>
+	
+	<select id="volList" resultType="map">
+		select *
+			from vol
+	</select>
+	
+</mapper>
