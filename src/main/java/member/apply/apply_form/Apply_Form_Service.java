@@ -35,4 +35,13 @@ public class Apply_Form_Service {
 		
 	}
 	
+	public List<Map<String, Object>> rec_formList(){
+		List<Map<String, Object>> rec_formList = apply_form_dao.rec_formList();
+		
+		if(rec_formList.isEmpty()) {
+			rec_formList = null;
+		}
+		return rec_formList;
+	}
+	
 }

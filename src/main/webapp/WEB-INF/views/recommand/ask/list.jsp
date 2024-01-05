@@ -2,18 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <style>
 	#rec {
 	  width : 40%;
-	  height: 40%;
 	  border: 1px solid gray;
 	}
 </style>
-<hr>
+<br>
 <!-- 추천서 요청 리스트 -->
 <div align="left">
-	<p style="font-weight: bold; font-size: 20px;">추천서 요청 리스트 <!-- 수신인(to_member)한테 양식 생성되게 -->
+	<p style="font-weight: bold; font-size: 20px;">추천서 요청 리스트 (나 > 수신인)<!-- 수신인(to_member)한테 양식 생성되게 -->
 	<div id="rec">
 		<table>
 			<c:choose>						
@@ -37,7 +36,7 @@
 						</tr>
 						<tr>			
 							<td><strong>요청일</strong></td>
-							<td><fmt:formatDate value="${vo.ASK_DATE }" pattern="yyyy-MM-dd"/> -> 수정하면 수정한 시간으로 변경??</td> 
+							<td><fmt:formatDate value="${vo.ASK_DATE }" pattern="yyyy-MM-dd"/></td> 
 						</tr>
 						<td>
 							<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/recommand/ask_updateform?no=${vo.REC_ASK_ID }'">
@@ -49,10 +48,12 @@
 		</table>
 	</div>
 </div>
-
+<br>
+<br>
+<br>
 <!-- 추천서 완료 리스트 (수신자가 작성 완료해서 받게되는 최종 형태의 추천서) -->
 <div align="left">
-	<p style="font-weight: bold; font-size: 20px;">추천서 완료 리스트 <!-- 수신자가 작성완료한 추천서 -->
+	<p style="font-weight: bold; font-size: 20px;">추천서 완료 리스트 (수신인 > 나)<!-- 수신자가 작성완료한 추천서 -->
 	<div id="rec">
 		<table>
 			<c:choose>						

@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="member.recommand.rec_form.Rec_Form_DTO">
 		insert into rec_form values(
 			rec_form_seq.nextval,
-			#{rec_form_id},
+			#{rec_form_id},			<!-- UUID -->
 			'pf_no2',				<!-- #{pf_no} -->
-			#{rec_ask_id},
+			#{rec_ask_id},			<!-- UUID -->
 			'member_no2',			<!-- #{member_no} -->
 			#{detail},
 			sysdate

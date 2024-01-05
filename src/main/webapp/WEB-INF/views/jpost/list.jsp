@@ -39,7 +39,7 @@
 		<table>
 			<tr>
 				<th></th>
-				<td> Q) 리스트 순서는 시작일, 종료일 내림차순 중 어떤걸로??</td>
+				<td> <!-- Q) 리스트 순서는 시작일, 종료일 내림차순 중 어떤걸로?? --></td>
 			</tr>
 			<c:choose>						
 				<c:when test="${all_list == null }">

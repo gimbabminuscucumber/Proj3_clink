@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	<!-- date탸입 칼럼의 sysdate을 원하는 날짜 형태로 출력 -->
 <style>
 	th{
@@ -11,8 +11,8 @@
 		border: 1px solid;
 	}
 </style>
-<hr>
 <div align="center">
+	<p style="font-weight: bold; font-size: 20px;">추천서 요청
 	<table class="">
 		<tr>
 			<th>수신인</th>
@@ -30,9 +30,8 @@
 		<tr>
 	</table>
 	<div>
-		<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/recommand/ask_updateform?no=${vo.REC_ASK_ID }'">
-		<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath}/recommand/ask_delete?no=${vo.REC_ASK_ID }'">
 		<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/recommand/ask_list'">
+		<input type="button" value="작성" onclick="location.href='${pageContext.request.contextPath}/recommand/form_writeform?no=${vo.REC_ASK_ID }'">	 <!-- 요청 form의 id 를 넘겼음 -->
 	</div>
 	
 </div>

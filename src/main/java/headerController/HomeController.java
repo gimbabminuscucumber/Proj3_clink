@@ -20,7 +20,8 @@ public class HomeController implements ProjectPath{
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, HttpServletRequest req) {
 		System.out.println("컨트롤러 실행");
-		return  "/WEB-INF/views/home.jsp"; //PROFILE+"business.jsp"; //"/WEB-INF/views/cLayout/header.jsp";
+		//return  "/WEB-INF/views/home.jsp"; 			// 희락이가 만든 페이지 실행
+		return  "/WEB-INF/views/cLayout/header.jsp";	// 내가 만든거 실행
 	}
 	
 	

@@ -74,4 +74,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order by a.apply_date desc
 	</select>
 	
+	<select id="applyList" resultType="map">
+		select *
+			from apply a
+			inner join apply_form af
+			on a.apply_form_id = af.apply_form_id
+			
+			where a.apply_stat_no = 1
+	</select>
+	
 </mapper>

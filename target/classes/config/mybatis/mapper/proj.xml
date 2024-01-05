@@ -7,10 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="member.pf.proj.Proj_DTO">
 		insert into proj values(
 			#{proj_no},
-			'pf_no2',		<!-- #{pf_no} -->		
-			'member_no2',	<!-- #{member_no} -->
-			#{name},
-			#{stat}
+			'pf_no1',		<!-- #{pf_no} -->		
+			'member_no1',	<!-- #{member_no} -->
+			#{name},		<!-- 같이 프로젝트 진행한 사람들 -->
+			#{stat}			<!-- 프로젝트 진행상태 -->
 		)
 	</insert>
 	

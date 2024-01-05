@@ -14,6 +14,7 @@ import member.recommand.rec_form.Rec_Form_DTO;
 import member.recommand.rec_form.Rec_Form_Service;
 import member.recommand.relation.Relation_DTO;
 import member.recommand.relation.Relation_Service;
+import path.Encry;
 
 @Controller
 public class Rec_Controller {
@@ -45,7 +46,9 @@ public class Rec_Controller {
 	@RequestMapping("/recommand/ask_write")
 	public String ask_write(Model model, Rec_Ask_DTO vo) {
 		
-		vo.setRec_ask_id("REAX");
+		System.out.println("ask_write에서 vo = " + vo);
+		
+		vo.setRec_ask_id(Encry.getUUID("REAX"));
 		
 		int su = rec_ask_service.insert(vo);
 		
@@ -69,9 +72,9 @@ public class Rec_Controller {
 	}
 	
 	@RequestMapping("/recommand/form_write")
-	public String form_write(Model model, Rec_Form_DTO vo) {
+	public String form_write(Model model, Rec_Form_DTO vo, String no) {
 		
-		vo.setRec_ask_id("REFX");
+		vo.setRec_form_id(Encry.getUUID("REFX"));
 		
 		int su = rec_form_service.insert(vo);
 		
@@ -140,6 +143,10 @@ public class Rec_Controller {
 		
 		// 추천서 작성 완료 리스트
 		List<Map<String, Object>> rec_formList = rec_form_service.rec_formList();
+		
+		// rec_formList 에 값이 있는지 없는지 확인
+		// 데이터 있으면 false, 없으면 true
+		System.out.println(rec_formList == null);
 		
 		model.addAttribute("alist", rec_askList);
 		model.addAttribute("flist", rec_formList);

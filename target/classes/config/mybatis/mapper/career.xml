@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="member.pf.career.Career_DTO">
 		insert into career values(
 			#{career_no},
-			'pf_no1',			<!-- #{pf_no}, -->
-			'member_no1',		<!-- #{member_no} -->
+			'pf_no2',				<!-- #{pf_no}, -->
+			'member_no2',			<!-- #{member_no}, -->
 			#{company},
 			#{posi},
 			#{task},

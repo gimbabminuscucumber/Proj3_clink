@@ -39,4 +39,10 @@ public class Apply_Form_DAO {
 		return sqlSession.selectOne("apply.getContent", no);
 	}
 	
+	// apply / apply_form 칼럼들 사용
+	public List<Map<String, Object>> rec_formList(){
+		return sqlSession.selectList("apply_form.rec_formList");
+		
+	}
+	
 }

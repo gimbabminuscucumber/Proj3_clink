@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp" %>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <script type="text/javascript">
 	function checkWrite(){
 		if(document.write.content.value == ""){
@@ -20,9 +20,9 @@
 	
 	td{
 		border: 1px solid;
+		width: 500px;
 	}
 </style>
-<hr>
 <div align="center">
 	<form action="${pageContext.request.contextPath }/recommand/ask_write" method="post" name="write">
 		<table>														

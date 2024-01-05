@@ -125,9 +125,6 @@
 			let id = f.id.value;
 			let pw = f.pw.value;
 			
-
-			
-			
 			f.action = "${pageContext.request.contextPath}/blogin";
 			f.submit();
 			//console.log('[id ='+id+' pw = '+pw+']')

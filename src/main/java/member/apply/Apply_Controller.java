@@ -78,6 +78,9 @@ public class Apply_Controller {
 		
 		List<Map<String, Object>> applyList = apply_service.applyList();
 		
+		// 데이터 있는지 여부 확인
+		System.out.println(applyList == null);
+		
 		model.addAttribute("applyList", applyList);
 		
 		return ViewPath.APPLY + "list.jsp";
@@ -86,8 +89,8 @@ public class Apply_Controller {
 	@RequestMapping("/apply/submitform")
 	public String submitform(Model model, String no) {
 		
-		List<Map<String, Object>> applyList = apply_service.applyList();	// 유저가 작성한 지원서들 효출
-//		Map<String,Object> map = jpost_service.getContent(no);			// 제출할 지원서
+		List<Map<String, Object>> applyList = apply_service.applyList();	// 유저가 작성한 지원서들 호출
+//		Map<String,Object> map = jpost_service.getContent(no);				// 제출할 지원서
 
 		//model.addAttribute("no", no);
 //		model.addAttribute("map", map);

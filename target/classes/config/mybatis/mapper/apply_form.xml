@@ -18,4 +18,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			from apply_form af
 	</select>
 	
+	<select id="list" resultType="member.apply.apply_form.Apply_Form_DTO">
+		select *
+			from apply_form af
+			inner join apply a
+			on a.apply_form_id = af.apply_form_id
+	</select>
+	
+	
+	
 </mapper>

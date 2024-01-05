@@ -36,7 +36,14 @@ public class Rec_Ask_Service {
 	}
 	
 	public List<Map<String, Object>> rec_askList(){
-		return rec_ask_dao.rec_askList();
+//		return rec_ask_dao.rec_askList();
+		
+		List<Map<String, Object>> rec_askList = rec_ask_dao.rec_askList();
+		
+		if(rec_askList.isEmpty()) {
+			rec_askList = null;
+		}
+		return rec_askList;
 	}
 
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp" %>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <script type="text/javascript">
 	function checkWrite(){
 		if(document.update.detail.value == ""){

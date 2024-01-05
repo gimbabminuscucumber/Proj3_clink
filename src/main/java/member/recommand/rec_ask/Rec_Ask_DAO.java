@@ -34,7 +34,7 @@ public class Rec_Ask_DAO {
 	}
 	
 	public List<Map<String, Object>> rec_askList(){
-		return sqlSession.selectList("rec_ask.rec_asklist");
+		return sqlSession.selectList("rec_ask.rec_askList");
 	}
 
 	public Map<String, Object> content(String no) {

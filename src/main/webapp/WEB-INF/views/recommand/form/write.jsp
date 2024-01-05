@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp" %>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <script type="text/javascript">
 	function checkWrite(){
 		if(document.write.detail.value == ""){
@@ -18,9 +18,9 @@
 	
 	td{
 		border: 1px solid;
+		width: 500px;
 	}
 </style>
-<hr>
 <!-- 요청 추천서-->
 <div align="center">
 	<p style="font-weight: bold; font-size: 20px;">추천서 작성
@@ -39,14 +39,17 @@
 </div>
 	
 <div align="center">
-	<form action="${pageContext.request.contextPath }/recommand/form_write" method="post" name="write">
-		<table>														
-			<tr>
-				<th>추천 내용</th>
-				<tr><td><input type="text" name="detail" placeholder="ex) 열정적으로 업무를 수행해오며 성장을 위한 노력을 하며 전문성을 키워갔다..."></td>
-			</tr>
-		</table>
-	</form>
+	<div id="rec">
+		<form action="${pageContext.request.contextPath }/recommand/form_write" method="post" name="write">
+			<table>														
+				<tr>
+					<th>추천 내용</th>
+					<tr><td><input type="text" name="detail" placeholder="ex) 열정적으로 업무를 수행해오며 성장을 위한 노력을 하며 전문성을 키워갔다..."></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
 	<div class="btn">
 		<input type="button" value="추천서 작성완료" onclick="javascript:checkWrite()">
 	</div>

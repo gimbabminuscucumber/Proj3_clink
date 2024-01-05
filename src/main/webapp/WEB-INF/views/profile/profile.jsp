@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	<!-- date탸입 칼럼의 sysdate을 원하는 날짜 형태로 출력 -->
 <%@ page import="java.util.Date" %>									
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>		<!-- jquery -->
-<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>
 <style>
 	#pf {
 	  width : 40%;
@@ -15,12 +15,11 @@
 
 
 </script>
-<hr>
 
 <!-- 프로필 출력 화면 -->
 <!--  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  CAREER  -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">경력 사항</p>
 		<table id="career">
 			<c:choose>
@@ -34,7 +33,8 @@
 				<c:otherwise>
 					<c:forEach var="vo" items="${careerList }">
 						<tr>
-							<td>${vo.COMPANY} (${vo.CTNAME}) • ${vo.EMPL_TYPE}</td></tr>
+							<td>${vo.COMPANY} 
+							<td><td>(${vo.CTNAME})  •  ${vo.EMPL_TYPE}</td></tr>
 						<tr>
 							<td>
 								<fmt:formatDate value="${vo.START_DATE }" pattern="yyyy-MM"/> ~ <fmt:formatDate value="${vo.END_DATE }" pattern="yyyy-MM"/>
@@ -45,13 +45,11 @@
 								<fmt:formatDate value="${vo.END_DATE }" pattern="yyyyMM" var="end"/>
 							<td>
 							<td>
-								(${end-strt }개월)
-							</td>	
-							<td>	
+								(${end-strt + 1 }개월)
 								<c:if test="${vo.STAT == 0 }"> • 퇴사</c:if> 
 								<c:if test="${vo.STAT == 1 }"> • 재직중</c:if> 
 							</td>
-							<td>
+							<td>	<!-- 우측 정렬로 바꾸기 > css 때매 안되는듯?? -->
 								<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/profile/career_updateform?no=${vo.CAREER_NO }'">
 								<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath}/profile/career_delete?no=${vo.CAREER_NO }'">
 							</td>
@@ -64,7 +62,7 @@
 
 <!--  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  EDU  -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">학력 사항</p>
 		<table id="edu">
 			<c:choose>
@@ -87,8 +85,6 @@
 							<c:if test="${vo.DEGREE == 4}">전문박사</c:if>
 							<c:if test="${vo.DEGREE == 5}">박사</c:if>
 							</td>
-						</tr>
-						<tr>
 							<td>
 								<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/profile/edu_updateform?no=${vo.EDU_NO }'">
 								<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath}/profile/edu_delete?no=${vo.EDU_NO }'">
@@ -102,7 +98,7 @@
 	
 <!-- REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST  REST -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">휴식기</p>
 		<table id="rest">
 			<c:choose>
@@ -143,7 +139,7 @@
 
 <!-- CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT  CERT -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">자격증</p>
 		<table id="cert">
 			<c:choose>
@@ -172,7 +168,7 @@
 	
 <!-- INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT  INSCERT -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">수료증</p>
 		<table id="inscert">
 			<c:choose>
@@ -201,7 +197,7 @@
 	
 <!-- PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ  PROJ -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">프로젝트</p>
 		<table id="proj">
 			<c:choose>
@@ -234,7 +230,7 @@
 	
 <!-- ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY  ARMY -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">병역</p>
 		<table id="army">
 			<c:choose>
@@ -324,7 +320,7 @@
 	
 <!-- VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL  VOL -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">봉사활동</p>
 		<table id="vol">
 			<c:choose>
@@ -360,7 +356,7 @@
 
 <!-- THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS  THESIS -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">논문/저자</p>
 		<table id="thesis">
 			<c:choose>
@@ -393,7 +389,7 @@
 
 <!-- LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL  LANGSKILL -->
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">외국어 능력</p>
 		<table id="thesis">
 			<c:choose>
@@ -423,7 +419,7 @@
 
 <!-- ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG  ORG -->	
 <c:set var="cpath" value="${pageContext.request.contextPath	}"/>
-	<div align="left" id="pf">
+	<div align="" id="pf">
 		<p style="font-weight: bold; font-size: 20px;">단체활동</p>
 		<table id="org">
 			<c:choose>

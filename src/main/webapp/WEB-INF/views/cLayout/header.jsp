@@ -161,6 +161,15 @@
 						<li><a href="#" title="">자기소개서 양식 관리</a></li>		
 					</ul>
 				</li>
+				<li><span>회원 정보</span>
+					<ul>
+						<li><a href="${finalPath }profile/profile" title="">회원 프로필</a></li>
+						<li><a href="${finalPath }profile/addProfile" title="">프로필 추가</a></li>
+						<li><a href="${finalPath }recommand/ask_writeform" title="">추천서 요청</a></li>
+						<li><a href="${finalPath }recommand/ask_list" title="">추천서 목록</a></li>
+						<li><a href="${finalPath }apply/list" title="">이력서 목록</a></li>
+					</ul>
+				</li>
 				<li><span>뉴스레터</span>
 					<ul>
 						<li><a href="#" title="">뉴스레터 발행</a></li>

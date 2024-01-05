@@ -47,6 +47,9 @@ public class GradeO_Mng_DTO {
 	}
 
 
+	
+	
+	
 	public void setGradeo_mng_no(int gradeo_mng_no) {
 		this.gradeo_mng_no = gradeo_mng_no;
 	}

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/cLayout/header.jsp" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/WEB-INF/views/layout/header.jsp" %>
-<hr>
 <div align="center">
 
 	<!-- 프로필 추가 화면 -->

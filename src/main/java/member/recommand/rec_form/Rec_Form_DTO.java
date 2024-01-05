@@ -23,8 +23,15 @@ public class Rec_Form_DTO {
 	}
 	
 	public Rec_Form_DTO(int rec_form_no, String rec_form_id, String pf_no, String member_no, String rec_ask_id, String detail, Date form_date) {
-		super();
+		this.rec_form_no = rec_form_no;
+		this.rec_form_id = rec_form_id;
+		this.pf_no = pf_no;
+		this.member_no = member_no;
+		this.rec_ask_id = rec_ask_id;
+		this.detail = detail;
+		this.form_date = form_date;
 	}
+	
 	
 	public Rec_Form_DTO(String rec_form_id, String pf_no, String member_no, String rec_ask_id, String detail, Date form_date) {
 		this.rec_form_id = rec_form_id;

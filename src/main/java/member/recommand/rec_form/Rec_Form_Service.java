@@ -36,7 +36,14 @@ public class Rec_Form_Service {
 	}
 	
 	public List<Map<String, Object>> rec_formList(){
-		return rec_form_dao.rec_formList();
+//		return rec_form_dao.rec_formList();
+
+		List<Map<String, Object>> rec_formList = rec_form_dao.rec_formList();
+		
+		if(rec_formList.isEmpty()) {
+			rec_formList = null;
+		}
+		return rec_formList;
 	}
 	
 	public List<Map<String, Object>> rec_all(String no){

@@ -167,7 +167,7 @@ public class Profile_Controller implements ProjectPath{
 	public String career_write(Model model, Career_DTO vo) {
 		
 		// UUID 생성
-		vo.setCareer_no("CAXX");
+		vo.setCareer_no(Encry.getUUID("CAXX"));
 		
 		int su = career_service.insert(vo);
 		
@@ -180,7 +180,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "career_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		return PROFILE + "result.jsp";
 	}
 
@@ -199,7 +199,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "edu_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -226,7 +226,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "rest_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -246,7 +246,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "cert_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -266,7 +266,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "inscert_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -283,7 +283,7 @@ public class Profile_Controller implements ProjectPath{
 		// 프로젝트 참가자 입력 구현해야함
 		
 		// UUID 생성
-		pvo.setPf_no(Encry.getUUID("PRXX"));
+		pvo.setProj_no(Encry.getUUID("PRXX"));
 		evo.setProj_entry_no(Encry.getUUID("PREX"));
 		
 		int su = proj_service.insert(pvo);
@@ -291,7 +291,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "proj_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -313,7 +313,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "army_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -333,7 +333,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -353,7 +353,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "thesis_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -374,7 +374,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "langskill_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -399,7 +399,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "org_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -424,7 +424,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "jstat_write");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -441,7 +441,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "career_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -454,7 +454,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "edu_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -467,7 +467,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "cert_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -479,7 +479,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "inscert_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -492,7 +492,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "rest_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -505,7 +505,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "proj_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 
 		System.out.println("profile/proj_delete 에서 su = " + su);
 		System.out.println("profile/proj_delete 에서 no = " + no);
@@ -521,7 +521,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "army_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -534,7 +534,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "vol_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -547,7 +547,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "thesis_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -560,7 +560,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "langskill_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -577,7 +577,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "org_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -594,7 +594,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "jstat_delete");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -631,7 +631,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "career_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 
 		return PROFILE + "result.jsp";
 	}
@@ -657,7 +657,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "edu_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -684,7 +684,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "rest_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -713,7 +713,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "cert_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -738,7 +738,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "inscert_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -767,7 +767,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "proj_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -792,7 +792,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "army_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -817,7 +817,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "vol_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -842,7 +842,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "thesis_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -867,7 +867,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "langskill_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -896,7 +896,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "org_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}
@@ -925,7 +925,7 @@ public class Profile_Controller implements ProjectPath{
 		
 		model.addAttribute("su", su);
 		model.addAttribute("status", "jstat_update");
-		model.addAttribute("url", "/profile/profile");
+		model.addAttribute("url", "/clink/profile/profile");
 		
 		return PROFILE + "result.jsp";
 	}

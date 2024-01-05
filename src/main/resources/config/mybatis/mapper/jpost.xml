@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{end_date}, 
 			#{locate},
 			sysdate, 			<!-- #{post_date}, -->
-			#{stat},			
+			1,					<!-- #{stat},  -->			
 			#{url, jdbcType=VARCHAR}, <!-- null이 들어가는 자리에 오류 발생을 잡기 위해서 사용 -->
 			#{file_name, jdbcType=VARCHAR},
 			#{hit},				

@@ -32,6 +32,8 @@ public class LangSkill_Service {
 		return langSkill_dao.selectOne(no);
 	}
 	
+	
+	
 	public List<Map<String, Object>> langskillList(){
 		return langSkill_dao.langskillList();
 	}

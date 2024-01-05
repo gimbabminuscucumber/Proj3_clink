@@ -64,7 +64,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rec_askList" resultType="map">
 		select *
 			from rec_ask a
-			
 			inner join relation r
 			on a.relation_no = r.relation_no
 	</select>

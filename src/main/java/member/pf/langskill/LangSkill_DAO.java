@@ -30,7 +30,7 @@ public class LangSkill_DAO {
 	}
 	
 	public Map<String, Object> selectOne(String no){
-		return sqlSession.selectOne("langskill,selectOne", no);
+		return sqlSession.selectOne("langskill.selectOne", no);
 	}
 	
 	public List<Map<String, Object>> langskillList(){

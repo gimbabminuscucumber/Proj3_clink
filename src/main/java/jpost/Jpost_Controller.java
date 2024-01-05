@@ -307,15 +307,15 @@ public class Jpost_Controller {
 	public String content(Model model, String no) {		
 
 		System.out.println("jpost/content 에서 no = " + no);
-		
+//		
 		// apply 테이블 데이터 >> jpost_content 에서 사용
 		Map<String,Object> map = jpost_service.getContent(no);
-		List<Map<String, Object>> applyList = apply_service.applyList();
+//		List<Map<String, Object>> applyList = apply_service.applyList();
 		List<Jpost_DTO> jpostList = jpost_service.jpostList(no);
 		
 		model.addAttribute("vo", map);								// "vo" 는 @RequestMapping("/jpost/write") 에서 생성한 vo 객체
 		//"apply_vo", applyList
-		model.addAttribute("applyList", applyList);					// 얘 보내는 목적이 뭐임???
+//		model.addAttribute("applyList", applyList);					// 얘 보내는 목적이 뭐임???	>> 작성한 채용공고 내용 볼때 사용
 		//"jvo", jpostList
 		model.addAttribute("jList", jpostList);						
 
