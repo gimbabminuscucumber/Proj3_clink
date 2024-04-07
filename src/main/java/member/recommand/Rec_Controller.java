@@ -138,6 +138,7 @@ public class Rec_Controller {
 	@RequestMapping("/recommand/ask_list")
 	public String ask_list(Model model) {
 	
+		
 		// 추천서 작성 요청 리스트
 		List<Map<String, Object>> rec_askList = rec_ask_service.rec_askList();
 		
@@ -146,10 +147,15 @@ public class Rec_Controller {
 		
 		// rec_formList 에 값이 있는지 없는지 확인
 		// 데이터 있으면 false, 없으면 true
-		System.out.println(rec_formList == null);
+		System.out.println("Rec_Contreller가 null??: " + rec_formList == null);
 		
 		model.addAttribute("alist", rec_askList);
 		model.addAttribute("flist", rec_formList);
+
+		
+		System.out.println("Rec_Controller.ask_list의 model : " + model);
+		System.out.println("Rec_Controller.ask_list의 rec_askList : " + rec_askList);
+		System.out.println("Rec_Controller.ask_list의 rec_formList : " + rec_formList);
 	
 		return ViewPath.RECOMMAND + "/ask/list.jsp";
 	}
@@ -157,6 +163,7 @@ public class Rec_Controller {
 	@RequestMapping("/recommand/form_list")
 	public String form_list(Model model, String no) {
 		
+		System.out.println("Rec_Controller.form_list의 no : " + no);
 		// 추천서 작성 대기 리스트
 		List<Map<String, Object>> rec_askList = rec_ask_service.rec_askList();
 		

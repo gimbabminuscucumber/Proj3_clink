@@ -109,6 +109,7 @@ public class Profile_Controller implements ProjectPath{
 	@RequestMapping("/profile/profile")
 	public String list(Model model) {
 		
+		
 		// 저장한 데이터 불러오기 (map은 테이블간 join 했을 떄 사용, 하기 코드는 selectList로 하는게 더 맞는 코드인데 일단 사용)
 		List<Map<String, Object>> careerList = career_service.careerList();
 		List<Map<String, Object>> eduList = edu_service.eduList();
@@ -140,6 +141,10 @@ public class Profile_Controller implements ProjectPath{
 //		model.addAttribute("examList", examList);
 //		model.addAttribute("awardList", awardList);
 		
+		System.out.println("Profile_Controller.list의 model : " + model);
+		System.out.println("Profile_Controller.list의 restList : " + restList);
+		System.out.println("Profile_Controller.list의 restList.isEmpty() : " + restList.isEmpty());
+
 		return PROFILE + "profile.jsp";
 	}
 
