@@ -6,6 +6,9 @@
 - jdk 1.7
 - oracleDB
 - myBatis
+- tomcat 9.0
+- sts tool
+
 
 ## 테이블
 ```sql
