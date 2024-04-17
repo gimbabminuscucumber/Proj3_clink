@@ -765,19 +765,8 @@ insert into admin values(admin_seq.nextval, 'gimbabminuscucumber', '123', 'admin
 insert into admin values(admin_seq.nextval, 'heerak', '123', 'admin02@naver.com', '010-1234-5679', '정희락', '2팀', '개발자');
 insert into admin values(admin_seq.nextval, 'sinna', '123', 'admin03@naver.com', '010-1234-5678', '박신아', '3팀', '개발자');
 
-INSERT INTO LOGIN_LOG(LOGIN_LOG_NO, MEMBER_NO, UPDATED) VALUES (
-	LOGIN_LOG_SEQ.NEXTVAL, 
-	1, 
-	SYSDATE
-);
-
-INSERT INTO ACT_LOG VALUES(
-	ACT_LOG_SEQ.NEXTVAL, 
-	1, 
-	2, 
-	1, 
-	SYSDATE
-);
+INSERT INTO LOGIN_LOG(LOGIN_LOG_NO, MEMBER_NO, UPDATED) VALUES (LOGIN_LOG_SEQ.NEXTVAL, 1, SYSDATE);
+INSERT INTO ACT_LOG VALUES(ACT_LOG_SEQ.NEXTVAL, 1, 2, 1, SYSDATE);
 
 insert into relation values(0, '관계를 선택하세요');
 insert into relation values(1, '직장 상사');
