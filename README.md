@@ -3,7 +3,7 @@
 
 ## 환경
 - macOS
-- jdk
+- jdk 1.7
 - oracleDB
 - myBatis
 
