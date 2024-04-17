@@ -4,10 +4,10 @@
 ## 환경
 - macOS
 - jdk 1.7
-- oracleDB
-- myBatis
 - tomcat 9.0
 - sts tool
+- oracleDB
+- 인코딩 utf-8
 
 
 ## 테이블
